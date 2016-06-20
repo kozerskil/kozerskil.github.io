@@ -24,6 +24,7 @@ System.config({
             "node_modules/@angular/platform-browser-dynamic/platform-browser-dynamic.umd.js",
             "node_modules/@angular/platform-browser/platform-browser.umd.js",
             "node_modules/@angular/router/router.umd.js",
+            "node_modules/hammerjs/hammer.js",
             "node_modules/rxjs/Observable.js",
             "node_modules/rxjs/Observer.js",
             "node_modules/rxjs/Subject.js",
@@ -55,6 +56,7 @@ System.config({
         "@angular": "node_modules/@angular",
         "angular2-in-memory-web-api": "node_modules/angular2-in-memory-web-api",
         "app": "build",
+        "hammerjs": "node_modules/hammerjs",
         "rxjs": "node_modules/rxjs",
         "seedrandom": "node_modules/seedrandom"
     },
@@ -97,7 +99,11 @@ System.config({
         },
         "app": {
             "defaultExtension": "js",
-            "main": "bundle.js"
+            "main": "main.js"
+        },
+        "hammerjs": {
+            "defaultExtension": "js",
+            "main": "hammer.js"
         },
         "rxjs": {
             "defaultExtension": "js"
