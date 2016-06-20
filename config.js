@@ -17,13 +17,13 @@ System.config({
             "build/app/shared/navigation.component.js",
             "build/app/shared/rxjs-operators.js",
             "build/main.js",
-            "node_modules/@angular/common//bundles/common.umd.js",
-            "node_modules/@angular/compiler//bundles/compiler.umd.js",
-            "node_modules/@angular/core//bundles/core.umd.js",
-            "node_modules/@angular/http//bundles/http.umd.js",
-            "node_modules/@angular/platform-browser-dynamic//bundles/platform-browser-dynamic.umd.js",
-            "node_modules/@angular/platform-browser//bundles/platform-browser.umd.js",
-            "node_modules/@angular/router//bundles/router.umd.js",
+            "node_modules/@angular/common/bundles/common.umd.js",
+            "node_modules/@angular/compiler/bundles/compiler.umd.js",
+            "node_modules/@angular/core/bundles/core.umd.js",
+            "node_modules/@angular/http/bundles/http.umd.js",
+            "node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js",
+            "node_modules/@angular/platform-browser/bundles/platform-browser.umd.js",
+            "node_modules/@angular/router/bundles/router.umd.js",
             "node_modules/hammerjs/hammer.js",
             "node_modules/rxjs/Observable.js",
             "node_modules/rxjs/Observer.js",
@@ -63,35 +63,35 @@ System.config({
     "packages": {
         "@angular/common": {
             "defaultExtension": "js",
-            "main": "/bundles/common.umd.js"
+            "main": "bundles/common.umd.js"
         },
         "@angular/compiler": {
             "defaultExtension": "js",
-            "main": "/bundles/compiler.umd.js"
+            "main": "bundles/compiler.umd.js"
         },
         "@angular/core": {
             "defaultExtension": "js",
-            "main": "/bundles/core.umd.js"
+            "main": "bundles/core.umd.js"
         },
         "@angular/http": {
             "defaultExtension": "js",
-            "main": "/bundles/http.umd.js"
+            "main": "bundles/http.umd.js"
         },
         "@angular/platform-browser": {
             "defaultExtension": "js",
-            "main": "/bundles/platform-browser.umd.js"
+            "main": "bundles/platform-browser.umd.js"
         },
         "@angular/platform-browser-dynamic": {
             "defaultExtension": "js",
-            "main": "/bundles/platform-browser-dynamic.umd.js"
+            "main": "bundles/platform-browser-dynamic.umd.js"
         },
         "@angular/router": {
             "defaultExtension": "js",
-            "main": "/bundles/router.umd.js"
+            "main": "bundles/router.umd.js"
         },
         "@angular/upgrade": {
             "defaultExtension": "js",
-            "main": "/bundles/upgrade.umd.js"
+            "main": "bundles/upgrade.umd.js"
         },
         "angular2-in-memory-web-api": {
             "defaultExtension": "js",

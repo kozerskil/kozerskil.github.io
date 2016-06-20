@@ -1,0 +1,25 @@
+<div class="ui card" (click)="answer = true" @someAniTrigger="''+!answer">
+    <div class="center aligned content" *ngIf="memox">
+        <div class="header">{{memox.a2}}</div>
+        <div class="description">{{memox.a4}}</div>
+    </div>
+    <div class="center aligned content ui horizontal segments" *ngIf="!memox">
+        <div class="ui basic loading segment"></div>
+    </div>
+    <div class="ui positive button">sprawdź</div>
+</div>
+<div class="ui card" (click)="answer = false" (swipeleft)="response(true)" (swiperight)="response(false)" @someAniTrigger="''+answer">
+    <div class="center aligned content" *ngIf="memox">
+        <div class="header">{{memox.a1}}</div>
+        <div class="description">{{memox.a3}}</div>
+    </div>
+    <div class="center aligned content ui horizontal segments" *ngIf="!memox">
+        <div class="ui basic loading segment"></div>
+    </div>
+    <div class="extra content">
+        <div class="ui two buttons">
+            <div class="ui primary button" (click)="response(true)">pamiętam</div>
+            <div class="ui orange inverted button" (click)="response(false)">nie pamiętam</div>
+        </div>
+    </div>
+</div>
