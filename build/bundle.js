@@ -15948,7 +15948,7 @@ $__System.register("15", ["3", "d"], function(exports_1, context_1) {
           var _this = this;
           this.onAnswer = new core_1.EventEmitter();
           this.response = function(answer) {
-            _this.memox = null;
+            _this.uiMemo = null;
             _this.onAnswer.emit({answer: answer});
           };
         }
@@ -15956,14 +15956,14 @@ $__System.register("15", ["3", "d"], function(exports_1, context_1) {
           var _this = this;
           this.answer = false;
           setTimeout(function() {
-            return _this.memox = _this.memo;
+            return _this.uiMemo = _this.memo;
           }, 400);
         };
         __decorate([core_1.Input(), __metadata('design:type', lesson_data_1.Memo)], MemoCardComponent.prototype, "memo", void 0);
         __decorate([core_1.Output(), __metadata('design:type', Object)], MemoCardComponent.prototype, "onAnswer", void 0);
         MemoCardComponent = __decorate([core_1.Component({
           selector: 'memo-card',
-          templateUrl: './app/lessons/shared/memo-card.component.html',
+          template: "\n    <div class=\"ui card\" (click)=\"answer = true\" @someAniTrigger=\"''+!answer\">\n        <div class=\"center aligned content\" *ngIf=\"uiMemo\">\n            <div class=\"header\">{{uiMemo.a2}}</div>\n            <div class=\"description\">{{uiMemo.a4}}</div>\n        </div>\n        <div class=\"center aligned content ui horizontal segments\" *ngIf=\"!uiMemo\">\n            <div class=\"ui basic loading segment\"></div>\n        </div>\n        <div class=\"ui positive button\">sprawd\u017A</div>\n    </div>\n    <div class=\"ui card\" (click)=\"answer = false\" (swipeleft)=\"response(true)\" (swiperight)=\"response(false)\"  @someAniTrigger=\"''+answer\">\n        <div class=\"center aligned content\" *ngIf=\"uiMemo\">\n            <div class=\"header\">{{uiMemo.a1}}</div>\n            <div class=\"description\">{{uiMemo.a3}}</div>\n        </div>\n        <div class=\"center aligned content ui horizontal segments\" *ngIf=\"!uiMemo\">\n            <div class=\"ui basic loading segment\"></div>\n        </div>\n        <div class=\"extra content\">\n            <div class=\"ui two buttons\">\n                <div class=\"ui primary button\" (click)=\"response(true)\">pami\u0119tam</div>\n                <div class=\"ui orange inverted button\" (click)=\"response(false)\">nie pami\u0119tam</div>\n            </div>\n        </div>\n    </div>\n    ",
           styles: ['.ui.card {width: 100%; height: 100%;}', ':host {width: 290px; height: 15em; position:relative; display: block;}', '.ui.card {position: absolute; margin: 0;}'],
           animations: [core_1.trigger('someAniTrigger', [core_1.state('false', core_1.style({
             transform: 'rotateY(180deg)',
