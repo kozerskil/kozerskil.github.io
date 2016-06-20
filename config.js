@@ -99,7 +99,7 @@ System.config({
         },
         "app": {
             "defaultExtension": "js",
-            "main": "main.js"
+            "main": "bundle.js"
         },
         "hammerjs": {
             "defaultExtension": "js",
