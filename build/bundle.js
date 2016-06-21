@@ -15448,7 +15448,7 @@ $__System.register("c", ["3", "d", "e", "f"], function(exports_1, context_1) {
         __decorate([core_1.Input(), __metadata('design:type', lesson_data_1.Lesson)], LessonCardComponent.prototype, "lesson", void 0);
         LessonCardComponent = __decorate([core_1.Component({
           selector: 'lesson-card',
-          template: "\n    <a class=\"ui centered card\" [routerLink]=\"['/lesson', lesson.name]\">\n        <div class=\"content\">\n            <div class=\"header\">{{lesson.title}}</div>\n            <div class=\"meta\" *ngIf=\"config\">Paczka {{config.lessonNum + 1}}/{{config.lessonCount}}</div>\n            <div class=\"description\" *ngIf=\"config\">Do powt\u00F3rzenia {{config.toRepeat}} karty</div>\n        </div>\n    </a>\n    ",
+          template: "\n    <a class=\"ui centered link card\" [routerLink]=\"['/lesson', lesson.name]\">\n        <div class=\"content\">\n            <div class=\"header\">\n                <i class=\"student icon\"></i>\n                {{lesson.title}}\n            </div>\n            <div class=\"meta\" *ngIf=\"config\">Paczka {{config.lessonNum + 1}}/{{config.lessonCount}}</div>\n            <div class=\"description\" *ngIf=\"config\">Do powt\u00F3rzenia {{config.toRepeat}} karty</div>\n        </div>\n    </a>\n    ",
           styles: [':host {display: block;}'],
           directives: [router_1.ROUTER_DIRECTIVES]
         }), __param(0, core_1.Inject(localStorage_service_1.LocalStorageService)), __metadata('design:paramtypes', [localStorage_service_1.LocalStorageService])], LessonCardComponent);
@@ -15509,7 +15509,7 @@ $__System.register("10", ["3", "c", "11"], function(exports_1, context_1) {
         LessonsScreenComponent = __decorate([core_1.Component({
           selector: 'lessons',
           template: "\n    <div class=\"ui four column doubling stackable grid container\">\n    <div class=\"column\" *ngFor='let lesson of lessons'>\n        <lesson-card [lesson]='lesson'></lesson-card>\n    </div>\n    </div>\n    ",
-          styles: [':host {display: block;}'],
+          styles: [':host {display: block; margin-top:1em;}'],
           directives: [lesson_card_component_1.LessonCardComponent]
         }), __param(0, core_1.Inject(lesson_service_1.LessonService)), __metadata('design:paramtypes', [lesson_service_1.LessonService])], LessonsScreenComponent);
         return LessonsScreenComponent;
@@ -15718,12 +15718,6 @@ $__System.register("13", ["12"], function(exports_1, context_1) {
           }
           return this.memos[this.indices.next()];
         };
-        Memos.prototype.randomize = function(seed) {
-          this.config.seed = seed || '' + Math.random();
-          this.config.lessonNum = 0;
-          this.config.cardCount = this.config.perLesson;
-          this.indices = this.createIndices(this.config);
-        };
         Memos.prototype.nextPack = function() {
           this.config.lessonNum++;
           this.config.lessonNum %= this.config.lessonCount;
@@ -15847,7 +15841,8 @@ $__System.register("14", ["3", "f", "11", "e", "15", "13"], function(exports_1, 
             _this.serialize();
           };
           this.randomize = function() {
-            _this.memos.randomize();
+            _this.config = {};
+            _this.memos = memos_1.Memos.create(_this.lesson.content, _this.config);
             _this.memo = _this.memos.first();
             _this.serialize();
           };
@@ -15871,7 +15866,7 @@ $__System.register("14", ["3", "f", "11", "e", "15", "13"], function(exports_1, 
         LessonScreenComponent = __decorate([core_1.Component({
           template: "\n    <div class=\"ui grid container\" *ngIf=\"lesson\">\n        <div class=\"row\">\n            <h2 class=\"ui center aligned icon header\">\n                <i class=\"student icon\"></i>\n                {{lesson.title}}\n                <div class=\"sub header\">\n                    Paczka {{config.lessonNum + 1}}/{{config.lessonCount}}, zosta\u0142y {{config.cardCount}} karty\n                </div>\n            </h2>\n        </div>\n        <div class=\"centered row\">\n        <div class=\"ui three basic tiny buttons\">\n            <button class=\"ui button\" (click)=\"nextPack()\">Nast\u0119pna paczka</button>\n            <button class=\"ui button\" (click)=\"randomize()\">Pomieszaj wszystkie karty</button>\n            <a class=\"ui button\" [routerLink]=\"['/repetition', id]\">Powt\u00F3rka z lekcji</a>\n            </div>\n        </div>\n        <div class=\"centered row\" *ngIf=\"memo\">\n            <memo-card [memo]=\"memo\" (onAnswer)='onAnswer($event.answer)'></memo-card>\n        </div>\n        <div class=\"centered row\" *ngIf=\"!memo\">\n            <div class=\"ui circular segment\">\n                <h2 class=\"ui icon header\">\n                    <i class=\"green checkmark icon\"></i>\n                    <div class=\"sub header\">Paczka zapami\u0119tana :)</div>\n                </h2>\n            </div>\n        </div>\n    </div>\n    ",
           directives: [memo_card_component_1.MemoCardComponent, router_1.ROUTER_DIRECTIVES],
-          styles: ['.ui.circular.segment{width: 16em;height: 16em;}', '.ui.circular.segment h2{margin-top: 1em;}']
+          styles: ['.ui.circular.segment {width: 16em;height: 16em;}', '.ui.circular.segment h2 {margin-top: 1em;}']
         }), __param(0, core_1.Inject(lesson_service_1.LessonService)), __param(1, core_1.Inject(localStorage_service_1.LocalStorageService)), __metadata('design:paramtypes', [lesson_service_1.LessonService, localStorage_service_1.LocalStorageService])], LessonScreenComponent);
         return LessonScreenComponent;
       }());
@@ -15963,8 +15958,8 @@ $__System.register("15", ["3", "d"], function(exports_1, context_1) {
         __decorate([core_1.Output(), __metadata('design:type', Object)], MemoCardComponent.prototype, "onAnswer", void 0);
         MemoCardComponent = __decorate([core_1.Component({
           selector: 'memo-card',
-          template: "\n    <div class=\"ui card\" (click)=\"answer = true\" @someAniTrigger=\"''+!answer\">\n        <div class=\"center aligned content\" *ngIf=\"uiMemo\">\n            <div class=\"header\">{{uiMemo.a2}}</div>\n            <div class=\"description\">{{uiMemo.a4}}</div>\n        </div>\n        <div class=\"center aligned content ui horizontal segments\" *ngIf=\"!uiMemo\">\n            <div class=\"ui basic loading segment\"></div>\n        </div>\n        <div class=\"ui positive button\">sprawd\u017A</div>\n    </div>\n    <div class=\"ui card\" (click)=\"answer = false\" (swipeleft)=\"response(true)\" (swiperight)=\"response(false)\"  @someAniTrigger=\"''+answer\">\n        <div class=\"center aligned content\" *ngIf=\"uiMemo\">\n            <div class=\"header\">{{uiMemo.a1}}</div>\n            <div class=\"description\">{{uiMemo.a3}}</div>\n        </div>\n        <div class=\"center aligned content ui horizontal segments\" *ngIf=\"!uiMemo\">\n            <div class=\"ui basic loading segment\"></div>\n        </div>\n        <div class=\"extra content\">\n            <div class=\"ui two buttons\">\n                <div class=\"ui primary button\" (click)=\"response(true)\">pami\u0119tam</div>\n                <div class=\"ui orange inverted button\" (click)=\"response(false)\">nie pami\u0119tam</div>\n            </div>\n        </div>\n    </div>\n    ",
-          styles: ['.ui.card {width: 100%; height: 100%;}', ':host {width: 290px; height: 15em; position:relative; display: block;}', '.ui.card {position: absolute; margin: 0;}'],
+          template: "\n    <div class=\"ui card\" (click)=\"answer = true\" @someAniTrigger=\"''+!answer\">\n        <div class=\"center aligned content\" *ngIf=\"uiMemo\">\n            <div class=\"header\">{{uiMemo.a2}}</div>\n            <div class=\"description\">{{uiMemo.a4}}</div>\n        </div>\n        <div class=\"content\" *ngIf=\"!uiMemo\">\n            <div class=\"ui active loader\"></div>\n        </div>\n        <div class=\"ui positive button\">sprawd\u017A</div>\n    </div>\n    <div class=\"ui card\" (click)=\"answer = false\" (swipeleft)=\"response(true)\" (swiperight)=\"response(false)\"  @someAniTrigger=\"''+answer\">\n        <div class=\"center aligned content\" *ngIf=\"uiMemo\">\n            <div class=\"header\">{{uiMemo.a1}}</div>\n            <div class=\"description\">{{uiMemo.a3}}</div>\n        </div>\n        <div class=\"content\" *ngIf=\"!uiMemo\">\n            <div class=\"ui active loader\"></div>\n        </div>\n        <div class=\"extra content\">\n            <div class=\"ui two buttons\">\n                <div class=\"ui primary button\" (click)=\"response(true)\">pami\u0119tam</div>\n                <div class=\"ui orange inverted button\" (click)=\"response(false)\">nie pami\u0119tam</div>\n            </div>\n        </div>\n    </div>\n    ",
+          styles: ['.ui.card {width: 100%; height: 100%;}', ':host {width: 290px; height: 15em; position:relative; display: block;}', '.ui.card {position: absolute; margin: 0;}', '.content {position: relative;}'],
           animations: [core_1.trigger('someAniTrigger', [core_1.state('false', core_1.style({
             transform: 'rotateY(180deg)',
             'z-index': '0',
@@ -16118,7 +16113,7 @@ $__System.register("17", ["3", "f"], function(exports_1, context_1) {
         function NavigationComponent() {}
         NavigationComponent = __decorate([core_1.Component({
           selector: 'nav',
-          template: "\n    <a class=\"item header\" [routerLink]=\"['/']\">ang@2</a>\n    <a class=\"item\" [routerLink]=\"['/lessons']\">Lekcje</a>\n    <a class=\"item\" [routerLink]=\"['/design']\">Design</a>\n    ",
+          template: "\n    <a class=\"item header\" [routerLink]=\"['/']\"><i class=\"student icon\"></i>ang@2</a>\n    ",
           directives: [router_1.ROUTER_DIRECTIVES],
           styles: [':host .item.router-link-active {background: rgba(0, 0, 0, 0.03);}']
         }), __metadata('design:paramtypes', [])], NavigationComponent);
@@ -17962,7 +17957,7 @@ $__System.register("19", ["3", "f"], function(exports_1, context_1) {
           this.router = router;
         }
         OtherComponent.prototype.ngOnInit = function() {
-          this.router.navigate(['/home']);
+          this.router.navigate(['/']);
         };
         OtherComponent = __decorate([core_1.Component({template: ''}), __param(0, core_1.Inject(router_1.Router)), __metadata('design:paramtypes', [router_1.Router])], OtherComponent);
         return OtherComponent;
@@ -18026,13 +18021,13 @@ $__System.register("1a", ["3", "f", "b", "10", "14", "16", "17", "18", "19"], fu
         function AppComponent() {}
         AppComponent = __decorate([core_1.Component({
           selector: 'main',
-          template: "\n    <nav class=\"ui menu\"></nav>\n    <router-outlet></router-outlet>\n    ",
+          template: "\n    <nav class=\"ui attached menu\"></nav>\n    <router-outlet></router-outlet>\n    ",
           directives: [router_1.ROUTER_DIRECTIVES, navigation_component_1.NavigationComponent]
         }), router_1.Routes([{
-          path: '/',
+          path: '/home',
           component: home_screen_component_1.HomeScreenComponent
         }, {
-          path: '/lessons',
+          path: '/',
           component: lessons_screen_component_1.LessonsScreenComponent
         }, {
           path: '/lesson/:id',
