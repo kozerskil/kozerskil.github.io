@@ -7,6 +7,7 @@ System.config({
             "build/app/lessons/lesson-screen.component.js",
             "build/app/lessons/lessons-screen.component.js",
             "build/app/lessons/repetition-screen.component.js",
+            "build/app/lessons/shared/declension.pipe.js",
             "build/app/lessons/shared/lesson-card.component.js",
             "build/app/lessons/shared/lesson.data.js",
             "build/app/lessons/shared/lesson.service.js",

@@ -16171,7 +16171,7 @@ $__System.register("18", ["3", "10"], function(exports_1, context_1) {
         function NavigationComponent() {}
         NavigationComponent = __decorate([core_1.Component({
           selector: 'nav',
-          template: "\n    <div class=\"ui text container\">\n    <a class=\"item header\" [routerLink]=\"['/']\">\n        <img class=\"logo\" src=\"assets/chicken_64.png\">\n        ang@2\n    </a>\n    </div>\n    ",
+          template: "\n    <div class=\"ui text container\">\n        <div class=\"item header\">\n            <img class=\"logo\" src=\"assets/chicken_135_135.png\">\n            fiszki\n        </div>\n        <a class=\"item\" [routerLink]=\"['/']\">lekcje</a>\n    </div>\n    ",
           directives: [router_1.ROUTER_DIRECTIVES],
           styles: ['nav.ui.menu:host { margin-bottom: 1em; }', '.item.router-link-active { background: rgba(0, 0, 0, 0.03); }', '.header img.logo { margin-right: 1.5em; }']
         }), __metadata('design:paramtypes', [])], NavigationComponent);
