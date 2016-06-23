@@ -15525,52 +15525,6 @@ $__System.register("11", ["3", "c", "12"], function(exports_1, context_1) {
   };
 });
 
-$__System.register("e", ["3"], function(exports_1, context_1) {
-  "use strict";
-  var __moduleName = context_1 && context_1.id;
-  var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
-    var c = arguments.length,
-        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-        d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
-      r = Reflect.decorate(decorators, target, key, desc);
-    else
-      for (var i = decorators.length - 1; i >= 0; i--)
-        if (d = decorators[i])
-          r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-  };
-  var __metadata = (this && this.__metadata) || function(k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
-      return Reflect.metadata(k, v);
-  };
-  var core_1;
-  var DeclensionPipe;
-  return {
-    setters: [function(core_1_1) {
-      core_1 = core_1_1;
-    }],
-    execute: function() {
-      DeclensionPipe = (function() {
-        function DeclensionPipe() {
-          this.suffix = {
-            1: 'a',
-            2: 'y',
-            3: 'y',
-            4: 'y'
-          };
-        }
-        DeclensionPipe.prototype.transform = function(value, num) {
-          return value + (this.suffix['' + num] || '');
-        };
-        DeclensionPipe = __decorate([core_1.Pipe({name: 'declension'}), __metadata('design:paramtypes', [])], DeclensionPipe);
-        return DeclensionPipe;
-      }());
-      exports_1("DeclensionPipe", DeclensionPipe);
-    }
-  };
-});
-
 (function() {
 var define = $__System.amdDefine;
 (function(pool, math) {
@@ -15921,7 +15875,7 @@ $__System.register("15", ["3", "10", "12", "f", "16", "e", "14"], function(expor
           this.storage.setObject(this.lesson.id, this.config);
         };
         LessonScreenComponent = __decorate([core_1.Component({
-          template: "\n    <div class=\"ui grid container\" *ngIf=\"lesson\">\n        <div class=\"centered row\">\n            <h3 class=\"ui header\">\n                <img src=\"assets/chicken.svg\">\n                <div class=\"content\">\n                {{lesson.title}}\n                <div class=\"sub header tiny\">\n                    Paczka {{config.lessonNum + 1}}/{{config.lessonCount}}, jeszcze {{config.cardCount}} {{\"kart\" | declension:config.cardCount}}\n                </div>\n                </div>\n            </h3>\n        </div>\n        <div class=\"centered row\">\n        <div class=\"ui three basic tiny buttons\">\n            <button class=\"ui button\" (click)=\"nextPack()\">Nast\u0119pna paczka</button>\n            <button class=\"ui button\" (click)=\"randomize()\">Pomieszaj karty</button>\n            <a class=\"ui button\" [routerLink]=\"['/repetition', id]\">Powt\u00F3rka lekcji</a>\n            </div>\n        </div>\n        <div class=\"centered row\" *ngIf=\"memo\">\n            <memo-card [memo]=\"memo\" (onAnswer)='onAnswer($event.answer)'></memo-card>\n        </div>\n        <div class=\"centered row\" *ngIf=\"!memo\">\n            <div class=\"ui circular segment\">\n                <h2 class=\"ui header\">\n                    <img class=\"ui image\" src=\"assets/chicken.svg\">\n                    <div class=\"sub header\">Paczka zapami\u0119tana :)</div>\n                </h2>\n            </div>\n        </div>\n    </div>\n    ",
+          template: "\n    <div class=\"ui grid container\" *ngIf=\"lesson\">\n        <div class=\"centered row\">\n            <h3 class=\"ui header\">\n                <img src=\"assets/chicken.svg\">\n                <div class=\"content\">\n                {{lesson.title}}\n                <div class=\"sub header\">\n                    Paczka {{config.lessonNum + 1}}/{{config.lessonCount}}, jeszcze {{config.cardCount}} {{\"kart\" | declension:config.cardCount}}\n                </div>\n                </div>\n            </h3>\n        </div>\n        <div class=\"centered row\">\n        <div class=\"ui three basic tiny buttons\">\n            <button class=\"ui button\" (click)=\"nextPack()\">Nast\u0119pna paczka</button>\n            <button class=\"ui button\" (click)=\"randomize()\">Pomieszaj karty</button>\n            <a class=\"ui button\" [routerLink]=\"['/repetition', id]\">Powt\u00F3rka lekcji</a>\n            </div>\n        </div>\n        <div class=\"centered row\" *ngIf=\"memo\">\n            <memo-card [memo]=\"memo\" (onAnswer)='onAnswer($event.answer)'></memo-card>\n        </div>\n        <div class=\"centered row\" *ngIf=\"!memo\">\n            <div class=\"ui circular segment\">\n                <h2 class=\"ui header\">\n                    <img class=\"ui image\" src=\"assets/chicken.svg\">\n                    <div class=\"sub header\">Paczka zapami\u0119tana :)</div>\n                </h2>\n            </div>\n        </div>\n    </div>\n    ",
           directives: [memo_card_component_1.MemoCardComponent, router_1.ROUTER_DIRECTIVES],
           styles: ['.ui.circular.segment { width: 16em; height: 16em; }', '.ui.circular.segment h2 { margin-top: 1em; }', '.ui.circular.segment img { width: 2em; }', '.ui.header .content { text-align: initial; }'],
           pipes: [declension_pipe_1.DeclensionPipe]
@@ -16001,16 +15955,16 @@ $__System.register("16", ["3", "d"], function(exports_1, context_1) {
           var _this = this;
           this.onAnswer = new core_1.EventEmitter();
           this.response = function(answer) {
-            _this.uiMemo = null;
+            _this.answer = false;
             _this.onAnswer.emit({answer: answer});
+          };
+          this.rewrite = function() {
+            _this.uiMemo = _this.memo;
           };
         }
         MemoCardComponent.prototype.ngOnChanges = function() {
-          var _this = this;
-          this.answer = false;
-          setTimeout(function() {
-            return _this.uiMemo = _this.memo;
-          }, 400);
+          this.uiMemo = null;
+          setTimeout(this.rewrite, 400);
         };
         __decorate([core_1.Input(), __metadata('design:type', lesson_data_1.Memo)], MemoCardComponent.prototype, "memo", void 0);
         __decorate([core_1.Output(), __metadata('design:type', Object)], MemoCardComponent.prototype, "onAnswer", void 0);
@@ -16034,7 +15988,53 @@ $__System.register("16", ["3", "d"], function(exports_1, context_1) {
   };
 });
 
-$__System.register("17", ["3", "10", "12", "f", "16"], function(exports_1, context_1) {
+$__System.register("e", ["3"], function(exports_1, context_1) {
+  "use strict";
+  var __moduleName = context_1 && context_1.id;
+  var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
+    var c = arguments.length,
+        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+        d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
+      r = Reflect.decorate(decorators, target, key, desc);
+    else
+      for (var i = decorators.length - 1; i >= 0; i--)
+        if (d = decorators[i])
+          r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+  };
+  var __metadata = (this && this.__metadata) || function(k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
+      return Reflect.metadata(k, v);
+  };
+  var core_1;
+  var DeclensionPipe;
+  return {
+    setters: [function(core_1_1) {
+      core_1 = core_1_1;
+    }],
+    execute: function() {
+      DeclensionPipe = (function() {
+        function DeclensionPipe() {
+          this.suffix = {
+            1: 'a',
+            2: 'y',
+            3: 'y',
+            4: 'y'
+          };
+        }
+        DeclensionPipe.prototype.transform = function(value, num) {
+          return value + (this.suffix['' + num] || '');
+        };
+        DeclensionPipe = __decorate([core_1.Pipe({name: 'declension'}), __metadata('design:paramtypes', [])], DeclensionPipe);
+        return DeclensionPipe;
+      }());
+      exports_1("DeclensionPipe", DeclensionPipe);
+    }
+  };
+});
+
+$__System.register("17", ["3", "10", "12", "f", "16", "e"], function(exports_1, context_1) {
   "use strict";
   var __moduleName = context_1 && context_1.id;
   var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
@@ -16062,7 +16062,8 @@ $__System.register("17", ["3", "10", "12", "f", "16"], function(exports_1, conte
       router_1,
       lesson_service_1,
       localStorage_service_1,
-      memo_card_component_1;
+      memo_card_component_1,
+      declension_pipe_1;
   var RepetitionScreenComponent;
   return {
     setters: [function(core_1_1) {
@@ -16075,6 +16076,8 @@ $__System.register("17", ["3", "10", "12", "f", "16"], function(exports_1, conte
       localStorage_service_1 = localStorage_service_1_1;
     }, function(memo_card_component_1_1) {
       memo_card_component_1 = memo_card_component_1_1;
+    }, function(declension_pipe_1_1) {
+      declension_pipe_1 = declension_pipe_1_1;
     }],
     execute: function() {
       RepetitionScreenComponent = (function() {
@@ -16127,9 +16130,10 @@ $__System.register("17", ["3", "10", "12", "f", "16"], function(exports_1, conte
           });
         };
         RepetitionScreenComponent = __decorate([core_1.Component({
-          template: "\n    <div class=\"ui grid container\" *ngIf=\"lesson\">\n        <div class=\"row\">\n            <h2 class=\"ui center aligned icon header\">\n                <i class=\"student icon\"></i>\n                {{lesson.title}} {{lesson.name}}\n                <div class=\"sub header\">\n                    Zosta\u0142y {{cardCount}} karty\n                </div>\n            </h2>\n        </div>\n        <div class=\"centered row\" *ngIf=\"memo\">\n            <memo-card [memo]=\"memo\" (onAnswer)='onAnswer($event.answer)'></memo-card>\n        </div>\n        <div class=\"centered row\" *ngIf=\"!memo\">\n            <div class=\"ui circular segment\">\n                <h2 class=\"ui icon header\">\n                    <i class=\"green checkmark icon\"></i>\n                    <div class=\"sub header\">Wszystko zapami\u0119tane :)</div>\n                </h2>\n            </div>\n        </div>\n    </div>\n    ",
+          template: "\n    <div class=\"ui grid container\" *ngIf=\"lesson\">\n        <div class=\"centered row\">\n            <h3 class=\"ui header\">\n                <img src=\"assets/chicken.svg\">\n                <div class=\"content\">\n                    {{lesson.title}}\n                    <div class=\"sub header\">\n                        jeszcze {{cardCount}} {{\"kart\" | declension:cardCount}}\n                    </div>\n                </div>\n            </h3>\n        </div>\n        <div class=\"centered row\" *ngIf=\"memo\">\n            <memo-card [memo]=\"memo\" (onAnswer)='onAnswer($event.answer)'></memo-card>\n        </div>\n        <div class=\"centered row\" *ngIf=\"!memo\">\n            <div class=\"ui circular segment\">\n                <h2 class=\"ui header\">\n                    <img class=\"ui image\" src=\"assets/chicken.svg\">\n                    <div class=\"sub header\">Lekcja zapami\u0119tana :)</div>\n                </h2>\n            </div>\n        </div>\n    </div>\n    ",
           directives: [memo_card_component_1.MemoCardComponent, router_1.ROUTER_DIRECTIVES],
-          styles: ['.ui.circular.segment{width: 16em;height: 16em;}', '.ui.circular.segment h2{margin-top: 1em;}']
+          styles: ['.ui.circular.segment{width: 16em;height: 16em;}', '.ui.circular.segment h2{margin-top: 1em;}', '.ui.header .content { text-align: initial; }'],
+          pipes: [declension_pipe_1.DeclensionPipe]
         }), __param(0, core_1.Inject(lesson_service_1.LessonService)), __param(1, core_1.Inject(localStorage_service_1.LocalStorageService)), __metadata('design:paramtypes', [lesson_service_1.LessonService, localStorage_service_1.LocalStorageService])], RepetitionScreenComponent);
         return RepetitionScreenComponent;
       }());
@@ -18079,9 +18083,9 @@ $__System.register("1b", ["3", "10", "b", "11", "15", "17", "18", "19", "1a"], f
         function AppComponent() {}
         AppComponent = __decorate([core_1.Component({
           selector: 'main',
-          template: "\n    <nav class=\"ui top fixed borderless menu\"></nav>\n    <div class=\"ui main container\">\n        <router-outlet></router-outlet>\n    </div>\n    ",
+          template: "\n    <nav class=\"ui top fixed inverted borderless menu\"></nav>\n    <div class=\"ui main container\">\n        <router-outlet></router-outlet>\n    </div>\n    ",
           directives: [router_1.ROUTER_DIRECTIVES, navigation_component_1.NavigationComponent],
-          styles: ['.main { padding-top: 5em; }']
+          styles: ['.main { padding-top: 6em; }', 'nav.ui.menu { background-color: #607D8B; color: #fff; }']
         }), router_1.Routes([{
           path: '/home',
           component: home_screen_component_1.HomeScreenComponent
