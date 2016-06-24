@@ -16187,11 +16187,11 @@ $__System.register("18", ["3", "19"], function(exports_1, context_1) {
         };
         DictionaryScreenComponent.prototype.onChange = function(value) {
           this.lessons = this.allLessons.filter(function(item) {
-            return item.match(value);
+            return item.match(value.toUpperCase());
           });
         };
         DictionaryScreenComponent = __decorate([core_1.Component({
-          template: "\n    <div class=\"ui container\">\n        <div class=\"ui icon fluid input\">\n            <input type=\"text\" placeholder=\"szukaj...\" [ngModel]=\"search\" (ngModelChange)=\"onChange($event)\">\n            <i class=\"search icon\"></i>\n        </div>\n        <div class=\"ui container\" style=\"position: absolute; height: calc(100% - 10em); overflow: auto; bottom: 0;\">\n            <dl *ngFor=\"let lesson of lessons\">\n                <dt>{{lesson.term}}</dt>\n                <dd>{{lesson.description}}</dd>\n                <dd>{{lesson.desc1}}</dd>\n                <dd>{{lesson.desc2}}</dd>\n            </dl>\n        </div>\n    </div>\n    ",
+          template: "\n    <div class=\"ui container\">\n        <div class=\"ui icon fluid input\">\n            <input type=\"text\" placeholder=\"szukaj...\" [ngModel]=\"search\" (ngModelChange)=\"onChange($event)\">\n            <i class=\"search icon\"></i>\n        </div>\n        <div class=\"ui container\" style=\"position: absolute; overflow: auto; bottom: 0; top: 10em;\">\n            <dl *ngFor=\"let lesson of lessons\">\n                <dt>{{lesson.term}}</dt>\n                <dd>{{lesson.description}}</dd>\n                <dd>{{lesson.desc1}}</dd>\n                <dd>{{lesson.desc2}}</dd>\n            </dl>\n        </div>\n    </div>\n    ",
           styles: [':host { display: block; }']
         }), __param(0, core_1.Inject(dictionary_service_1.DictionaryService)), __metadata('design:paramtypes', [dictionary_service_1.DictionaryService])], DictionaryScreenComponent);
         return DictionaryScreenComponent;
@@ -38063,7 +38063,11 @@ $__System.register("19", ["3", "1e", "7", "1f"], function(exports_1, context_1) 
             return x;
           }).map(function(x) {
             return new DictionaryItem(x);
-          }).toArray();
+          }).toArray().map(function(x) {
+            return x.sort(function(a, b) {
+              return a.compare(b);
+            });
+          });
         };
         DictionaryService.prototype.getLesson = function(name) {
           var params = new http_1.URLSearchParams();
@@ -38083,13 +38087,21 @@ $__System.register("19", ["3", "1e", "7", "1f"], function(exports_1, context_1) 
       exports_1("DictionaryService", DictionaryService);
       DictionaryItem = (function() {
         function DictionaryItem(obj) {
-          this.term = obj['a1'];
-          this.description = obj['a2'];
-          this.desc1 = obj['a3'];
-          this.desc2 = obj['a4'];
+          this.comp = '|';
+          this.comp += this.term = obj['a1'];
+          this.comp += '|';
+          this.comp += this.description = obj['a2'];
+          this.comp += '|';
+          this.comp += this.desc1 = obj['a3'];
+          this.comp += '|';
+          this.comp += this.desc2 = obj['a4'];
+          this.comp = this.comp.toUpperCase();
         }
         DictionaryItem.prototype.match = function(value) {
-          return (this.term && this.term.indexOf(value) >= 0) || (this.description && this.description.indexOf(value) >= 0) || (this.desc1 && this.desc1.indexOf(value) >= 0) || (this.desc2 && this.desc2.indexOf(value) >= 0);
+          return this.comp.indexOf(value) >= 0;
+        };
+        DictionaryItem.prototype.compare = function(o) {
+          return this.term.localeCompare(o.term);
         };
         return DictionaryItem;
       }());
