@@ -15513,7 +15513,6 @@ $__System.register("11", ["3", "c", "12"], function(exports_1, context_1) {
           });
         };
         LessonsScreenComponent = __decorate([core_1.Component({
-          selector: 'lessons',
           template: "\n    <div class=\"ui four column doubling stackable grid container\">\n    <div class=\"column\" *ngFor='let lesson of lessons'>\n        <lesson-card [lesson]='lesson'></lesson-card>\n    </div>\n    </div>\n    ",
           styles: [':host {display: block;}'],
           directives: [lesson_card_component_1.LessonCardComponent]
@@ -16142,7 +16141,67 @@ $__System.register("17", ["3", "10", "12", "f", "16", "e"], function(exports_1, 
   };
 });
 
-$__System.register("18", ["3", "10"], function(exports_1, context_1) {
+$__System.register("18", ["3", "19"], function(exports_1, context_1) {
+  "use strict";
+  var __moduleName = context_1 && context_1.id;
+  var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
+    var c = arguments.length,
+        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+        d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
+      r = Reflect.decorate(decorators, target, key, desc);
+    else
+      for (var i = decorators.length - 1; i >= 0; i--)
+        if (d = decorators[i])
+          r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+  };
+  var __metadata = (this && this.__metadata) || function(k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
+      return Reflect.metadata(k, v);
+  };
+  var __param = (this && this.__param) || function(paramIndex, decorator) {
+    return function(target, key) {
+      decorator(target, key, paramIndex);
+    };
+  };
+  var core_1,
+      dictionary_service_1;
+  var DictionaryScreenComponent;
+  return {
+    setters: [function(core_1_1) {
+      core_1 = core_1_1;
+    }, function(dictionary_service_1_1) {
+      dictionary_service_1 = dictionary_service_1_1;
+    }],
+    execute: function() {
+      DictionaryScreenComponent = (function() {
+        function DictionaryScreenComponent(service) {
+          this.service = service;
+        }
+        DictionaryScreenComponent.prototype.ngOnInit = function() {
+          var _this = this;
+          this.service.getData().subscribe(function(data) {
+            return _this.allLessons = _this.lessons = data;
+          });
+        };
+        DictionaryScreenComponent.prototype.onChange = function(value) {
+          this.lessons = this.allLessons.filter(function(item) {
+            return item.match(value);
+          });
+        };
+        DictionaryScreenComponent = __decorate([core_1.Component({
+          templateUrl: 'app/dictionary/dictionary-screen.component.html',
+          styles: [':host { display: block; }']
+        }), __param(0, core_1.Inject(dictionary_service_1.DictionaryService)), __metadata('design:paramtypes', [dictionary_service_1.DictionaryService])], DictionaryScreenComponent);
+        return DictionaryScreenComponent;
+      }());
+      exports_1("DictionaryScreenComponent", DictionaryScreenComponent);
+    }
+  };
+});
+
+$__System.register("1a", ["3", "10"], function(exports_1, context_1) {
   "use strict";
   var __moduleName = context_1 && context_1.id;
   var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
@@ -16175,7 +16234,7 @@ $__System.register("18", ["3", "10"], function(exports_1, context_1) {
         function NavigationComponent() {}
         NavigationComponent = __decorate([core_1.Component({
           selector: 'nav',
-          template: "\n    <div class=\"ui text container\">\n        <div class=\"item header\">\n            <img class=\"logo\" src=\"assets/chicken_head.svg\">\n            fiszki\n        </div>\n        <a class=\"item\" [routerLink]=\"['/']\">lekcje</a>\n    </div>\n    ",
+          template: "\n    <div class=\"ui text container\">\n        <div class=\"item header\">\n            <img class=\"logo\" src=\"assets/chicken_head.svg\">\n            fiszki\n        </div>\n        <a class=\"item\" [routerLink]=\"['/']\">lekcje</a>\n        <a class=\"item\" [routerLink]=\"['/dictionary']\">s\u0142owniczek</a>\n    </div>\n    ",
           directives: [router_1.ROUTER_DIRECTIVES],
           styles: ['.item.router-link-active { background: rgba(0, 0, 0, 0.03); }', '.header img.logo { margin-right: 1.5em; }']
         }), __metadata('design:paramtypes', [])], NavigationComponent);
@@ -16186,7 +16245,7 @@ $__System.register("18", ["3", "10"], function(exports_1, context_1) {
   };
 });
 
-$__System.register("19", ["3", "f"], function(exports_1, context_1) {
+$__System.register("1b", ["3", "f"], function(exports_1, context_1) {
   "use strict";
   var __moduleName = context_1 && context_1.id;
   var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
@@ -17980,7 +18039,7 @@ var __extends = (this && this.__extends) || function(d, b) {
 }));
 
 })();
-$__System.register("1a", ["3", "10"], function(exports_1, context_1) {
+$__System.register("1c", ["3", "10"], function(exports_1, context_1) {
   "use strict";
   var __moduleName = context_1 && context_1.id;
   var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
@@ -18029,7 +18088,7 @@ $__System.register("1a", ["3", "10"], function(exports_1, context_1) {
   };
 });
 
-$__System.register("1b", ["3", "10", "b", "11", "15", "17", "18", "19", "1a"], function(exports_1, context_1) {
+$__System.register("1d", ["3", "10", "b", "11", "15", "17", "18", "1a", "1b", "1c"], function(exports_1, context_1) {
   "use strict";
   var __moduleName = context_1 && context_1.id;
   var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
@@ -18054,6 +18113,7 @@ $__System.register("1b", ["3", "10", "b", "11", "15", "17", "18", "19", "1a"], f
       lessons_screen_component_1,
       lesson_screen_component_1,
       repetition_screen_component_1,
+      dictionary_screen_component_1,
       navigation_component_1,
       design_component_1,
       other_component_1;
@@ -18071,6 +18131,8 @@ $__System.register("1b", ["3", "10", "b", "11", "15", "17", "18", "19", "1a"], f
       lesson_screen_component_1 = lesson_screen_component_1_1;
     }, function(repetition_screen_component_1_1) {
       repetition_screen_component_1 = repetition_screen_component_1_1;
+    }, function(dictionary_screen_component_1_1) {
+      dictionary_screen_component_1 = dictionary_screen_component_1_1;
     }, function(navigation_component_1_1) {
       navigation_component_1 = navigation_component_1_1;
     }, function(design_component_1_1) {
@@ -18099,6 +18161,9 @@ $__System.register("1b", ["3", "10", "b", "11", "15", "17", "18", "19", "1a"], f
           path: '/repetition/:id',
           component: repetition_screen_component_1.RepetitionScreenComponent
         }, {
+          path: '/dictionary',
+          component: dictionary_screen_component_1.DictionaryScreenComponent
+        }, {
           path: '/design/:id',
           component: design_component_1.DesignComponent
         }, {
@@ -18111,6 +18176,72 @@ $__System.register("1b", ["3", "10", "b", "11", "15", "17", "18", "19", "1a"], f
         return AppComponent;
       }());
       exports_1("AppComponent", AppComponent);
+    }
+  };
+});
+
+$__System.register("12", ["3", "1e", "7", "1f"], function(exports_1, context_1) {
+  "use strict";
+  var __moduleName = context_1 && context_1.id;
+  var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
+    var c = arguments.length,
+        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+        d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
+      r = Reflect.decorate(decorators, target, key, desc);
+    else
+      for (var i = decorators.length - 1; i >= 0; i--)
+        if (d = decorators[i])
+          r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+  };
+  var __metadata = (this && this.__metadata) || function(k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
+      return Reflect.metadata(k, v);
+  };
+  var __param = (this && this.__param) || function(paramIndex, decorator) {
+    return function(target, key) {
+      decorator(target, key, paramIndex);
+    };
+  };
+  var core_1,
+      http_1,
+      Observable_1;
+  var LessonService;
+  return {
+    setters: [function(core_1_1) {
+      core_1 = core_1_1;
+    }, function(http_1_1) {
+      http_1 = http_1_1;
+    }, function(Observable_1_1) {
+      Observable_1 = Observable_1_1;
+    }, function(_1) {}],
+    execute: function() {
+      LessonService = (function() {
+        function LessonService(http) {
+          this.http = http;
+        }
+        LessonService.prototype.getData = function() {
+          return this.http.get('data/ang.json').map(function(response) {
+            return response.json().results || [];
+          }).catch(this.handleError);
+        };
+        LessonService.prototype.getLesson = function(name) {
+          var params = new http_1.URLSearchParams();
+          params.set("x", "1");
+          return this.http.get('data/' + name + '.json', {search: params}).map(function(response) {
+            return response.json() || {};
+          }).catch(this.handleError);
+        };
+        LessonService.prototype.handleError = function(error) {
+          var errMsg = (error.message) ? error.message : error.status ? error.status + " - " + error.statusText : 'Server error';
+          console.error(errMsg);
+          return Observable_1.Observable.throw(errMsg);
+        };
+        LessonService = __decorate([core_1.Injectable(), __param(0, core_1.Inject(http_1.Http)), __metadata('design:paramtypes', [http_1.Http])], LessonService);
+        return LessonService;
+      }());
+      exports_1("LessonService", LessonService);
     }
   };
 });
@@ -30110,7 +30241,7 @@ var __extends = (this && this.__extends) || function(d, b) {
 }));
 
 })();
-$__System.registerDynamic("1c", ["1d"], true, function($__require, exports, module) {
+$__System.registerDynamic("20", ["21"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
@@ -30125,7 +30256,7 @@ $__System.registerDynamic("1c", ["1d"], true, function($__require, exports, modu
     }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
   };
-  var Subscription_1 = $__require('1d');
+  var Subscription_1 = $__require('21');
   var SubjectSubscription = (function(_super) {
     __extends(SubjectSubscription, _super);
     function SubjectSubscription(subject, observer) {
@@ -30156,7 +30287,7 @@ $__System.registerDynamic("1c", ["1d"], true, function($__require, exports, modu
   return module.exports;
 });
 
-$__System.registerDynamic("1e", [], true, function($__require, exports, module) {
+$__System.registerDynamic("22", [], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
@@ -30169,7 +30300,7 @@ $__System.registerDynamic("1e", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.registerDynamic("1f", [], true, function($__require, exports, module) {
+$__System.registerDynamic("23", [], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
@@ -30196,7 +30327,7 @@ $__System.registerDynamic("1f", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.registerDynamic("4", ["7", "20", "1d", "1c", "21", "1e", "1f"], true, function($__require, exports, module) {
+$__System.registerDynamic("4", ["7", "24", "21", "20", "25", "22", "23"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
@@ -30212,12 +30343,12 @@ $__System.registerDynamic("4", ["7", "20", "1d", "1c", "21", "1e", "1f"], true, 
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
   };
   var Observable_1 = $__require('7');
-  var Subscriber_1 = $__require('20');
-  var Subscription_1 = $__require('1d');
-  var SubjectSubscription_1 = $__require('1c');
-  var rxSubscriber_1 = $__require('21');
-  var throwError_1 = $__require('1e');
-  var ObjectUnsubscribedError_1 = $__require('1f');
+  var Subscriber_1 = $__require('24');
+  var Subscription_1 = $__require('21');
+  var SubjectSubscription_1 = $__require('20');
+  var rxSubscriber_1 = $__require('25');
+  var throwError_1 = $__require('22');
+  var ObjectUnsubscribedError_1 = $__require('23');
   var Subject = (function(_super) {
     __extends(Subject, _super);
     function Subject(destination, source) {
@@ -30394,7 +30525,7 @@ $__System.registerDynamic("4", ["7", "20", "1d", "1c", "21", "1e", "1f"], true, 
   return module.exports;
 });
 
-$__System.registerDynamic("5", ["22", "7"], true, function($__require, exports, module) {
+$__System.registerDynamic("5", ["26", "7"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
@@ -30409,7 +30540,7 @@ $__System.registerDynamic("5", ["22", "7"], true, function($__require, exports, 
     }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
   };
-  var root_1 = $__require('22');
+  var root_1 = $__require('26');
   var Observable_1 = $__require('7');
   var PromiseObservable = (function(_super) {
     __extends(PromiseObservable, _super);
@@ -30509,13 +30640,13 @@ $__System.registerDynamic("5", ["22", "7"], true, function($__require, exports, 
   return module.exports;
 });
 
-$__System.registerDynamic("6", ["22"], true, function($__require, exports, module) {
+$__System.registerDynamic("6", ["26"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var root_1 = $__require('22');
+  var root_1 = $__require('26');
   function toPromise(PromiseCtor) {
     var _this = this;
     if (!PromiseCtor) {
@@ -35267,7 +35398,7 @@ var __extends = (this && this.__extends) || function(d, b) {
   d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 (function(global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('rxjs/Observable'), require('@angular/platform-browser')) : typeof define === 'function' && define.amd ? define("23", ["exports", "3", "7", "a"], factory) : (factory((global.ng = global.ng || {}, global.ng.http = global.ng.http || {}), global.ng.core, global.Rx, global.ng.platformBrowser));
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('rxjs/Observable'), require('@angular/platform-browser')) : typeof define === 'function' && define.amd ? define("1e", ["exports", "3", "7", "a"], factory) : (factory((global.ng = global.ng || {}, global.ng.http = global.ng.http || {}), global.ng.core, global.Rx, global.ng.platformBrowser));
 }(this, function(exports, _angular_core, rxjs_Observable, _angular_platformBrowser) {
   'use strict';
   var globalScope;
@@ -36683,7 +36814,7 @@ var __extends = (this && this.__extends) || function(d, b) {
 }));
 
 })();
-$__System.registerDynamic("24", ["20"], true, function($__require, exports, module) {
+$__System.registerDynamic("27", ["24"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
@@ -36698,7 +36829,7 @@ $__System.registerDynamic("24", ["20"], true, function($__require, exports, modu
     }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
   };
-  var Subscriber_1 = $__require('20');
+  var Subscriber_1 = $__require('24');
   function _catch(selector) {
     var operator = new CatchOperator(selector);
     var caught = this.lift(operator);
@@ -36743,25 +36874,493 @@ $__System.registerDynamic("24", ["20"], true, function($__require, exports, modu
   return module.exports;
 });
 
-$__System.registerDynamic("25", ["7", "24"], true, function($__require, exports, module) {
+$__System.registerDynamic("28", ["7", "27"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
       global = this,
       GLOBAL = this;
   var Observable_1 = $__require('7');
-  var catch_1 = $__require('24');
+  var catch_1 = $__require('27');
   Observable_1.Observable.prototype.catch = catch_1._catch;
   return module.exports;
 });
 
-$__System.registerDynamic("26", ["22"], true, function($__require, exports, module) {
+$__System.registerDynamic("29", ["24"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var root_1 = $__require('22');
+  var __extends = (this && this.__extends) || function(d, b) {
+    for (var p in b)
+      if (b.hasOwnProperty(p))
+        d[p] = b[p];
+    function __() {
+      this.constructor = d;
+    }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+  };
+  var Subscriber_1 = $__require('24');
+  function map(project, thisArg) {
+    if (typeof project !== 'function') {
+      throw new TypeError('argument is not a function. Are you looking for `mapTo()`?');
+    }
+    return this.lift(new MapOperator(project, thisArg));
+  }
+  exports.map = map;
+  var MapOperator = (function() {
+    function MapOperator(project, thisArg) {
+      this.project = project;
+      this.thisArg = thisArg;
+    }
+    MapOperator.prototype.call = function(subscriber, source) {
+      return source._subscribe(new MapSubscriber(subscriber, this.project, this.thisArg));
+    };
+    return MapOperator;
+  }());
+  var MapSubscriber = (function(_super) {
+    __extends(MapSubscriber, _super);
+    function MapSubscriber(destination, project, thisArg) {
+      _super.call(this, destination);
+      this.project = project;
+      this.count = 0;
+      this.thisArg = thisArg || this;
+    }
+    MapSubscriber.prototype._next = function(value) {
+      var result;
+      try {
+        result = this.project.call(this.thisArg, value, this.count++);
+      } catch (err) {
+        this.destination.error(err);
+        return;
+      }
+      this.destination.next(result);
+    };
+    return MapSubscriber;
+  }(Subscriber_1.Subscriber));
+  return module.exports;
+});
+
+$__System.registerDynamic("2a", ["7", "29"], true, function($__require, exports, module) {
+  "use strict";
+  ;
+  var define,
+      global = this,
+      GLOBAL = this;
+  var Observable_1 = $__require('7');
+  var map_1 = $__require('29');
+  Observable_1.Observable.prototype.map = map_1.map;
+  return module.exports;
+});
+
+$__System.registerDynamic("2b", [], true, function($__require, exports, module) {
+  "use strict";
+  ;
+  var define,
+      global = this,
+      GLOBAL = this;
+  function isPromise(value) {
+    return value && typeof value.subscribe !== 'function' && typeof value.then === 'function';
+  }
+  exports.isPromise = isPromise;
+  return module.exports;
+});
+
+$__System.registerDynamic("2c", ["26"], true, function($__require, exports, module) {
+  "use strict";
+  ;
+  var define,
+      global = this,
+      GLOBAL = this;
+  var root_1 = $__require('26');
+  var Symbol = root_1.root.Symbol;
+  if (typeof Symbol === 'function') {
+    if (Symbol.iterator) {
+      exports.$$iterator = Symbol.iterator;
+    } else if (typeof Symbol.for === 'function') {
+      exports.$$iterator = Symbol.for('iterator');
+    }
+  } else {
+    if (root_1.root.Set && typeof new root_1.root.Set()['@@iterator'] === 'function') {
+      exports.$$iterator = '@@iterator';
+    } else if (root_1.root.Map) {
+      var keys = Object.getOwnPropertyNames(root_1.root.Map.prototype);
+      for (var i = 0; i < keys.length; ++i) {
+        var key = keys[i];
+        if (key !== 'entries' && key !== 'size' && root_1.root.Map.prototype[key] === root_1.root.Map.prototype['entries']) {
+          exports.$$iterator = key;
+          break;
+        }
+      }
+    } else {
+      exports.$$iterator = '@@iterator';
+    }
+  }
+  return module.exports;
+});
+
+$__System.registerDynamic("2d", ["24"], true, function($__require, exports, module) {
+  "use strict";
+  ;
+  var define,
+      global = this,
+      GLOBAL = this;
+  var __extends = (this && this.__extends) || function(d, b) {
+    for (var p in b)
+      if (b.hasOwnProperty(p))
+        d[p] = b[p];
+    function __() {
+      this.constructor = d;
+    }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+  };
+  var Subscriber_1 = $__require('24');
+  var InnerSubscriber = (function(_super) {
+    __extends(InnerSubscriber, _super);
+    function InnerSubscriber(parent, outerValue, outerIndex) {
+      _super.call(this);
+      this.parent = parent;
+      this.outerValue = outerValue;
+      this.outerIndex = outerIndex;
+      this.index = 0;
+    }
+    InnerSubscriber.prototype._next = function(value) {
+      this.parent.notifyNext(this.outerValue, value, this.outerIndex, this.index++, this);
+    };
+    InnerSubscriber.prototype._error = function(error) {
+      this.parent.notifyError(error, this);
+      this.unsubscribe();
+    };
+    InnerSubscriber.prototype._complete = function() {
+      this.parent.notifyComplete(this);
+      this.unsubscribe();
+    };
+    return InnerSubscriber;
+  }(Subscriber_1.Subscriber));
+  exports.InnerSubscriber = InnerSubscriber;
+  return module.exports;
+});
+
+$__System.registerDynamic("2e", ["26", "2f", "2b", "7", "2c", "30", "2d"], true, function($__require, exports, module) {
+  "use strict";
+  ;
+  var define,
+      global = this,
+      GLOBAL = this;
+  var root_1 = $__require('26');
+  var isArray_1 = $__require('2f');
+  var isPromise_1 = $__require('2b');
+  var Observable_1 = $__require('7');
+  var iterator_1 = $__require('2c');
+  var observable_1 = $__require('30');
+  var InnerSubscriber_1 = $__require('2d');
+  function subscribeToResult(outerSubscriber, result, outerValue, outerIndex) {
+    var destination = new InnerSubscriber_1.InnerSubscriber(outerSubscriber, outerValue, outerIndex);
+    if (destination.isUnsubscribed) {
+      return;
+    }
+    if (result instanceof Observable_1.Observable) {
+      if (result._isScalar) {
+        destination.next(result.value);
+        destination.complete();
+        return;
+      } else {
+        return result.subscribe(destination);
+      }
+    }
+    if (isArray_1.isArray(result)) {
+      for (var i = 0,
+          len = result.length; i < len && !destination.isUnsubscribed; i++) {
+        destination.next(result[i]);
+      }
+      if (!destination.isUnsubscribed) {
+        destination.complete();
+      }
+    } else if (isPromise_1.isPromise(result)) {
+      result.then(function(value) {
+        if (!destination.isUnsubscribed) {
+          destination.next(value);
+          destination.complete();
+        }
+      }, function(err) {
+        return destination.error(err);
+      }).then(null, function(err) {
+        root_1.root.setTimeout(function() {
+          throw err;
+        });
+      });
+      return destination;
+    } else if (typeof result[iterator_1.$$iterator] === 'function') {
+      for (var _i = 0,
+          _a = result; _i < _a.length; _i++) {
+        var item = _a[_i];
+        destination.next(item);
+        if (destination.isUnsubscribed) {
+          break;
+        }
+      }
+      if (!destination.isUnsubscribed) {
+        destination.complete();
+      }
+    } else if (typeof result[observable_1.$$observable] === 'function') {
+      var obs = result[observable_1.$$observable]();
+      if (typeof obs.subscribe !== 'function') {
+        destination.error('invalid observable');
+      } else {
+        return obs.subscribe(new InnerSubscriber_1.InnerSubscriber(outerSubscriber, outerValue, outerIndex));
+      }
+    } else {
+      destination.error(new TypeError('unknown type returned'));
+    }
+  }
+  exports.subscribeToResult = subscribeToResult;
+  return module.exports;
+});
+
+$__System.registerDynamic("31", ["24"], true, function($__require, exports, module) {
+  "use strict";
+  ;
+  var define,
+      global = this,
+      GLOBAL = this;
+  var __extends = (this && this.__extends) || function(d, b) {
+    for (var p in b)
+      if (b.hasOwnProperty(p))
+        d[p] = b[p];
+    function __() {
+      this.constructor = d;
+    }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+  };
+  var Subscriber_1 = $__require('24');
+  var OuterSubscriber = (function(_super) {
+    __extends(OuterSubscriber, _super);
+    function OuterSubscriber() {
+      _super.apply(this, arguments);
+    }
+    OuterSubscriber.prototype.notifyNext = function(outerValue, innerValue, outerIndex, innerIndex, innerSub) {
+      this.destination.next(innerValue);
+    };
+    OuterSubscriber.prototype.notifyError = function(error, innerSub) {
+      this.destination.error(error);
+    };
+    OuterSubscriber.prototype.notifyComplete = function(innerSub) {
+      this.destination.complete();
+    };
+    return OuterSubscriber;
+  }(Subscriber_1.Subscriber));
+  exports.OuterSubscriber = OuterSubscriber;
+  return module.exports;
+});
+
+$__System.registerDynamic("32", ["2e", "31"], true, function($__require, exports, module) {
+  "use strict";
+  ;
+  var define,
+      global = this,
+      GLOBAL = this;
+  var __extends = (this && this.__extends) || function(d, b) {
+    for (var p in b)
+      if (b.hasOwnProperty(p))
+        d[p] = b[p];
+    function __() {
+      this.constructor = d;
+    }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+  };
+  var subscribeToResult_1 = $__require('2e');
+  var OuterSubscriber_1 = $__require('31');
+  function mergeMap(project, resultSelector, concurrent) {
+    if (concurrent === void 0) {
+      concurrent = Number.POSITIVE_INFINITY;
+    }
+    if (typeof resultSelector === 'number') {
+      concurrent = resultSelector;
+      resultSelector = null;
+    }
+    return this.lift(new MergeMapOperator(project, resultSelector, concurrent));
+  }
+  exports.mergeMap = mergeMap;
+  var MergeMapOperator = (function() {
+    function MergeMapOperator(project, resultSelector, concurrent) {
+      if (concurrent === void 0) {
+        concurrent = Number.POSITIVE_INFINITY;
+      }
+      this.project = project;
+      this.resultSelector = resultSelector;
+      this.concurrent = concurrent;
+    }
+    MergeMapOperator.prototype.call = function(observer, source) {
+      return source._subscribe(new MergeMapSubscriber(observer, this.project, this.resultSelector, this.concurrent));
+    };
+    return MergeMapOperator;
+  }());
+  exports.MergeMapOperator = MergeMapOperator;
+  var MergeMapSubscriber = (function(_super) {
+    __extends(MergeMapSubscriber, _super);
+    function MergeMapSubscriber(destination, project, resultSelector, concurrent) {
+      if (concurrent === void 0) {
+        concurrent = Number.POSITIVE_INFINITY;
+      }
+      _super.call(this, destination);
+      this.project = project;
+      this.resultSelector = resultSelector;
+      this.concurrent = concurrent;
+      this.hasCompleted = false;
+      this.buffer = [];
+      this.active = 0;
+      this.index = 0;
+    }
+    MergeMapSubscriber.prototype._next = function(value) {
+      if (this.active < this.concurrent) {
+        this._tryNext(value);
+      } else {
+        this.buffer.push(value);
+      }
+    };
+    MergeMapSubscriber.prototype._tryNext = function(value) {
+      var result;
+      var index = this.index++;
+      try {
+        result = this.project(value, index);
+      } catch (err) {
+        this.destination.error(err);
+        return;
+      }
+      this.active++;
+      this._innerSub(result, value, index);
+    };
+    MergeMapSubscriber.prototype._innerSub = function(ish, value, index) {
+      this.add(subscribeToResult_1.subscribeToResult(this, ish, value, index));
+    };
+    MergeMapSubscriber.prototype._complete = function() {
+      this.hasCompleted = true;
+      if (this.active === 0 && this.buffer.length === 0) {
+        this.destination.complete();
+      }
+    };
+    MergeMapSubscriber.prototype.notifyNext = function(outerValue, innerValue, outerIndex, innerIndex, innerSub) {
+      if (this.resultSelector) {
+        this._notifyResultSelector(outerValue, innerValue, outerIndex, innerIndex);
+      } else {
+        this.destination.next(innerValue);
+      }
+    };
+    MergeMapSubscriber.prototype._notifyResultSelector = function(outerValue, innerValue, outerIndex, innerIndex) {
+      var result;
+      try {
+        result = this.resultSelector(outerValue, innerValue, outerIndex, innerIndex);
+      } catch (err) {
+        this.destination.error(err);
+        return;
+      }
+      this.destination.next(result);
+    };
+    MergeMapSubscriber.prototype.notifyComplete = function(innerSub) {
+      var buffer = this.buffer;
+      this.remove(innerSub);
+      this.active--;
+      if (buffer.length > 0) {
+        this._next(buffer.shift());
+      } else if (this.active === 0 && this.hasCompleted) {
+        this.destination.complete();
+      }
+    };
+    return MergeMapSubscriber;
+  }(OuterSubscriber_1.OuterSubscriber));
+  exports.MergeMapSubscriber = MergeMapSubscriber;
+  return module.exports;
+});
+
+$__System.registerDynamic("33", ["7", "32"], true, function($__require, exports, module) {
+  "use strict";
+  ;
+  var define,
+      global = this,
+      GLOBAL = this;
+  var Observable_1 = $__require('7');
+  var mergeMap_1 = $__require('32');
+  Observable_1.Observable.prototype.mergeMap = mergeMap_1.mergeMap;
+  Observable_1.Observable.prototype.flatMap = mergeMap_1.mergeMap;
+  return module.exports;
+});
+
+$__System.registerDynamic("34", ["24"], true, function($__require, exports, module) {
+  "use strict";
+  ;
+  var define,
+      global = this,
+      GLOBAL = this;
+  var __extends = (this && this.__extends) || function(d, b) {
+    for (var p in b)
+      if (b.hasOwnProperty(p))
+        d[p] = b[p];
+    function __() {
+      this.constructor = d;
+    }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+  };
+  var Subscriber_1 = $__require('24');
+  function filter(predicate, thisArg) {
+    return this.lift(new FilterOperator(predicate, thisArg));
+  }
+  exports.filter = filter;
+  var FilterOperator = (function() {
+    function FilterOperator(predicate, thisArg) {
+      this.predicate = predicate;
+      this.thisArg = thisArg;
+    }
+    FilterOperator.prototype.call = function(subscriber, source) {
+      return source._subscribe(new FilterSubscriber(subscriber, this.predicate, this.thisArg));
+    };
+    return FilterOperator;
+  }());
+  var FilterSubscriber = (function(_super) {
+    __extends(FilterSubscriber, _super);
+    function FilterSubscriber(destination, predicate, thisArg) {
+      _super.call(this, destination);
+      this.predicate = predicate;
+      this.thisArg = thisArg;
+      this.count = 0;
+      this.predicate = predicate;
+    }
+    FilterSubscriber.prototype._next = function(value) {
+      var result;
+      try {
+        result = this.predicate.call(this.thisArg, value, this.count++);
+      } catch (err) {
+        this.destination.error(err);
+        return;
+      }
+      if (result) {
+        this.destination.next(value);
+      }
+    };
+    return FilterSubscriber;
+  }(Subscriber_1.Subscriber));
+  return module.exports;
+});
+
+$__System.registerDynamic("35", ["7", "34"], true, function($__require, exports, module) {
+  "use strict";
+  ;
+  var define,
+      global = this,
+      GLOBAL = this;
+  var Observable_1 = $__require('7');
+  var filter_1 = $__require('34');
+  Observable_1.Observable.prototype.filter = filter_1.filter;
+  return module.exports;
+});
+
+$__System.registerDynamic("30", ["26"], true, function($__require, exports, module) {
+  "use strict";
+  ;
+  var define,
+      global = this,
+      GLOBAL = this;
+  var root_1 = $__require('26');
   var Symbol = root_1.root.Symbol;
   if (typeof Symbol === 'function') {
     if (Symbol.observable) {
@@ -36780,14 +37379,14 @@ $__System.registerDynamic("26", ["22"], true, function($__require, exports, modu
   return module.exports;
 });
 
-$__System.registerDynamic("27", ["20", "21"], true, function($__require, exports, module) {
+$__System.registerDynamic("36", ["24", "25"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var Subscriber_1 = $__require('20');
-  var rxSubscriber_1 = $__require('21');
+  var Subscriber_1 = $__require('24');
+  var rxSubscriber_1 = $__require('25');
   function toSubscriber(nextOrObserver, error, complete) {
     if (nextOrObserver && typeof nextOrObserver === 'object') {
       if (nextOrObserver instanceof Subscriber_1.Subscriber) {
@@ -36802,15 +37401,15 @@ $__System.registerDynamic("27", ["20", "21"], true, function($__require, exports
   return module.exports;
 });
 
-$__System.registerDynamic("7", ["22", "26", "27"], true, function($__require, exports, module) {
+$__System.registerDynamic("7", ["26", "30", "36"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var root_1 = $__require('22');
-  var observable_1 = $__require('26');
-  var toSubscriber_1 = $__require('27');
+  var root_1 = $__require('26');
+  var observable_1 = $__require('30');
+  var toSubscriber_1 = $__require('36');
   var Observable = (function() {
     function Observable(subscribe) {
       this._isScalar = false;
@@ -36878,7 +37477,7 @@ $__System.registerDynamic("7", ["22", "26", "27"], true, function($__require, ex
   return module.exports;
 });
 
-$__System.registerDynamic("28", [], true, function($__require, exports, module) {
+$__System.registerDynamic("2f", [], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
@@ -36890,7 +37489,7 @@ $__System.registerDynamic("28", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.registerDynamic("29", [], true, function($__require, exports, module) {
+$__System.registerDynamic("37", [], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
@@ -36903,7 +37502,7 @@ $__System.registerDynamic("29", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.registerDynamic("2a", [], true, function($__require, exports, module) {
+$__System.registerDynamic("38", [], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
@@ -36916,13 +37515,13 @@ $__System.registerDynamic("2a", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.registerDynamic("2b", ["2c"], true, function($__require, exports, module) {
+$__System.registerDynamic("39", ["3a"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var errorObject_1 = $__require('2c');
+  var errorObject_1 = $__require('3a');
   var tryCatchTarget;
   function tryCatcher() {
     try {
@@ -36941,7 +37540,7 @@ $__System.registerDynamic("2b", ["2c"], true, function($__require, exports, modu
   return module.exports;
 });
 
-$__System.registerDynamic("2c", [], true, function($__require, exports, module) {
+$__System.registerDynamic("3a", [], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
@@ -36951,7 +37550,7 @@ $__System.registerDynamic("2c", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.registerDynamic("2d", [], true, function($__require, exports, module) {
+$__System.registerDynamic("3b", [], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
@@ -36982,18 +37581,18 @@ $__System.registerDynamic("2d", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.registerDynamic("1d", ["28", "29", "2a", "2b", "2c", "2d"], true, function($__require, exports, module) {
+$__System.registerDynamic("21", ["2f", "37", "38", "39", "3a", "3b"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var isArray_1 = $__require('28');
-  var isObject_1 = $__require('29');
-  var isFunction_1 = $__require('2a');
-  var tryCatch_1 = $__require('2b');
-  var errorObject_1 = $__require('2c');
-  var UnsubscriptionError_1 = $__require('2d');
+  var isArray_1 = $__require('2f');
+  var isObject_1 = $__require('37');
+  var isFunction_1 = $__require('38');
+  var tryCatch_1 = $__require('39');
+  var errorObject_1 = $__require('3a');
+  var UnsubscriptionError_1 = $__require('3b');
   var Subscription = (function() {
     function Subscription(unsubscribe) {
       this.isUnsubscribed = false;
@@ -37087,7 +37686,7 @@ $__System.registerDynamic("1d", ["28", "29", "2a", "2b", "2c", "2d"], true, func
   return module.exports;
 });
 
-$__System.registerDynamic("22", [], true, function($__require, exports, module) {
+$__System.registerDynamic("26", [], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
@@ -37111,19 +37710,19 @@ $__System.registerDynamic("22", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.registerDynamic("21", ["22"], true, function($__require, exports, module) {
+$__System.registerDynamic("25", ["26"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var root_1 = $__require('22');
+  var root_1 = $__require('26');
   var Symbol = root_1.root.Symbol;
   exports.$$rxSubscriber = (typeof Symbol === 'function' && typeof Symbol.for === 'function') ? Symbol.for('rxSubscriber') : '@@rxSubscriber';
   return module.exports;
 });
 
-$__System.registerDynamic("2e", [], true, function($__require, exports, module) {
+$__System.registerDynamic("3c", [], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
@@ -37140,7 +37739,7 @@ $__System.registerDynamic("2e", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.registerDynamic("20", ["2a", "1d", "21", "2e"], true, function($__require, exports, module) {
+$__System.registerDynamic("24", ["38", "21", "25", "3c"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
@@ -37155,10 +37754,10 @@ $__System.registerDynamic("20", ["2a", "1d", "21", "2e"], true, function($__requ
     }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
   };
-  var isFunction_1 = $__require('2a');
-  var Subscription_1 = $__require('1d');
-  var rxSubscriber_1 = $__require('21');
-  var Observer_1 = $__require('2e');
+  var isFunction_1 = $__require('38');
+  var Subscription_1 = $__require('21');
+  var rxSubscriber_1 = $__require('25');
+  var Observer_1 = $__require('3c');
   var Subscriber = (function(_super) {
     __extends(Subscriber, _super);
     function Subscriber(destinationOrNext, error, complete) {
@@ -37338,7 +37937,7 @@ $__System.registerDynamic("20", ["2a", "1d", "21", "2e"], true, function($__requ
   return module.exports;
 });
 
-$__System.registerDynamic("2f", ["20"], true, function($__require, exports, module) {
+$__System.registerDynamic("3d", ["24"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
@@ -37353,69 +37952,58 @@ $__System.registerDynamic("2f", ["20"], true, function($__require, exports, modu
     }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
   };
-  var Subscriber_1 = $__require('20');
-  function map(project, thisArg) {
-    if (typeof project !== 'function') {
-      throw new TypeError('argument is not a function. Are you looking for `mapTo()`?');
-    }
-    return this.lift(new MapOperator(project, thisArg));
+  var Subscriber_1 = $__require('24');
+  function toArray() {
+    return this.lift(new ToArrayOperator());
   }
-  exports.map = map;
-  var MapOperator = (function() {
-    function MapOperator(project, thisArg) {
-      this.project = project;
-      this.thisArg = thisArg;
-    }
-    MapOperator.prototype.call = function(subscriber, source) {
-      return source._subscribe(new MapSubscriber(subscriber, this.project, this.thisArg));
+  exports.toArray = toArray;
+  var ToArrayOperator = (function() {
+    function ToArrayOperator() {}
+    ToArrayOperator.prototype.call = function(subscriber, source) {
+      return source._subscribe(new ToArraySubscriber(subscriber));
     };
-    return MapOperator;
+    return ToArrayOperator;
   }());
-  var MapSubscriber = (function(_super) {
-    __extends(MapSubscriber, _super);
-    function MapSubscriber(destination, project, thisArg) {
+  var ToArraySubscriber = (function(_super) {
+    __extends(ToArraySubscriber, _super);
+    function ToArraySubscriber(destination) {
       _super.call(this, destination);
-      this.project = project;
-      this.count = 0;
-      this.thisArg = thisArg || this;
+      this.array = [];
     }
-    MapSubscriber.prototype._next = function(value) {
-      var result;
-      try {
-        result = this.project.call(this.thisArg, value, this.count++);
-      } catch (err) {
-        this.destination.error(err);
-        return;
-      }
-      this.destination.next(result);
+    ToArraySubscriber.prototype._next = function(x) {
+      this.array.push(x);
     };
-    return MapSubscriber;
+    ToArraySubscriber.prototype._complete = function() {
+      this.destination.next(this.array);
+      this.destination.complete();
+    };
+    return ToArraySubscriber;
   }(Subscriber_1.Subscriber));
   return module.exports;
 });
 
-$__System.registerDynamic("30", ["7", "2f"], true, function($__require, exports, module) {
+$__System.registerDynamic("3e", ["7", "3d"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
       global = this,
       GLOBAL = this;
   var Observable_1 = $__require('7');
-  var map_1 = $__require('2f');
-  Observable_1.Observable.prototype.map = map_1.map;
+  var toArray_1 = $__require('3d');
+  Observable_1.Observable.prototype.toArray = toArray_1.toArray;
   return module.exports;
 });
 
-$__System.register("31", ["25", "30"], function(exports_1, context_1) {
+$__System.register("1f", ["28", "2a", "33", "35", "3e"], function(exports_1, context_1) {
   "use strict";
   var __moduleName = context_1 && context_1.id;
   return {
-    setters: [function(_1) {}, function(_2) {}],
+    setters: [function(_1) {}, function(_2) {}, function(_3) {}, function(_4) {}, function(_5) {}],
     execute: function() {}
   };
 });
 
-$__System.register("12", ["3", "23", "7", "31"], function(exports_1, context_1) {
+$__System.register("19", ["3", "1e", "7", "1f"], function(exports_1, context_1) {
   "use strict";
   var __moduleName = context_1 && context_1.id;
   var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
@@ -37442,7 +38030,8 @@ $__System.register("12", ["3", "23", "7", "31"], function(exports_1, context_1) 
   var core_1,
       http_1,
       Observable_1;
-  var LessonService;
+  var DictionaryService,
+      DictionaryItem;
   return {
     setters: [function(core_1_1) {
       core_1 = core_1_1;
@@ -37452,31 +38041,59 @@ $__System.register("12", ["3", "23", "7", "31"], function(exports_1, context_1) 
       Observable_1 = Observable_1_1;
     }, function(_1) {}],
     execute: function() {
-      LessonService = (function() {
-        function LessonService(http) {
+      DictionaryService = (function() {
+        function DictionaryService(http) {
           this.http = http;
         }
-        LessonService.prototype.getData = function() {
-          return this.http.get('data/ang.json').map(function(response) {
+        DictionaryService.prototype.getData = function() {
+          var _this = this;
+          return this.http.get('data/ang.json').catch(this.handleError).map(function(response) {
             return response.json().results || [];
-          }).catch(this.handleError);
+          }).map(function(data) {
+            return data.filter(function(x) {
+              return x.dict;
+            });
+          }).flatMap(function(x) {
+            return x;
+          }).flatMap(function(x) {
+            return _this.getLesson(x['name']);
+          }).map(function(x) {
+            return x['content'];
+          }).flatMap(function(x) {
+            return x;
+          }).map(function(x) {
+            return new DictionaryItem(x);
+          }).toArray();
         };
-        LessonService.prototype.getLesson = function(name) {
+        DictionaryService.prototype.getLesson = function(name) {
           var params = new http_1.URLSearchParams();
           params.set("x", "1");
           return this.http.get('data/' + name + '.json', {search: params}).map(function(response) {
             return response.json() || {};
           }).catch(this.handleError);
         };
-        LessonService.prototype.handleError = function(error) {
+        DictionaryService.prototype.handleError = function(error) {
           var errMsg = (error.message) ? error.message : error.status ? error.status + " - " + error.statusText : 'Server error';
           console.error(errMsg);
           return Observable_1.Observable.throw(errMsg);
         };
-        LessonService = __decorate([core_1.Injectable(), __param(0, core_1.Inject(http_1.Http)), __metadata('design:paramtypes', [http_1.Http])], LessonService);
-        return LessonService;
+        DictionaryService = __decorate([core_1.Injectable(), __param(0, core_1.Inject(http_1.Http)), __metadata('design:paramtypes', [http_1.Http])], DictionaryService);
+        return DictionaryService;
       }());
-      exports_1("LessonService", LessonService);
+      exports_1("DictionaryService", DictionaryService);
+      DictionaryItem = (function() {
+        function DictionaryItem(obj) {
+          this.term = obj['a1'];
+          this.description = obj['a2'];
+          this.desc1 = obj['a3'];
+          this.desc2 = obj['a4'];
+        }
+        DictionaryItem.prototype.match = function(value) {
+          return (this.term && this.term.indexOf(value) >= 0) || (this.description && this.description.indexOf(value) >= 0) || (this.desc1 && this.desc1.indexOf(value) >= 0) || (this.desc2 && this.desc2.indexOf(value) >= 0);
+        };
+        return DictionaryItem;
+      }());
+      exports_1("DictionaryItem", DictionaryItem);
     }
   };
 });
@@ -39001,7 +39618,7 @@ var define = $__System.amdDefine;
   var freeGlobal = (typeof window !== 'undefined' ? window : (typeof self !== 'undefined' ? self : {}));
   freeGlobal.Hammer = Hammer;
   if (typeof define === 'function' && define.amd) {
-    define("32", [], function() {
+    define("3f", [], function() {
       return Hammer;
     });
   } else if (typeof module != 'undefined' && module.exports) {
@@ -39012,7 +39629,7 @@ var define = $__System.amdDefine;
 })(window, document, 'Hammer');
 
 })();
-$__System.register("1", ["8", "10", "23", "1b", "12", "f", "32"], function(exports_1, context_1) {
+$__System.register("1", ["8", "10", "1e", "1d", "12", "19", "f", "3f"], function(exports_1, context_1) {
   "use strict";
   var __moduleName = context_1 && context_1.id;
   var platform_browser_dynamic_1,
@@ -39020,6 +39637,7 @@ $__System.register("1", ["8", "10", "23", "1b", "12", "f", "32"], function(expor
       http_1,
       app_component_1,
       lesson_service_1,
+      dictionary_service_1,
       localStorage_service_1;
   return {
     setters: [function(platform_browser_dynamic_1_1) {
@@ -39032,11 +39650,13 @@ $__System.register("1", ["8", "10", "23", "1b", "12", "f", "32"], function(expor
       app_component_1 = app_component_1_1;
     }, function(lesson_service_1_1) {
       lesson_service_1 = lesson_service_1_1;
+    }, function(dictionary_service_1_1) {
+      dictionary_service_1 = dictionary_service_1_1;
     }, function(localStorage_service_1_1) {
       localStorage_service_1 = localStorage_service_1_1;
     }, function(_1) {}],
     execute: function() {
-      platform_browser_dynamic_1.bootstrap(app_component_1.AppComponent, [router_1.ROUTER_PROVIDERS, [http_1.HTTP_PROVIDERS, lesson_service_1.LessonService, localStorage_service_1.LocalStorageService]]);
+      platform_browser_dynamic_1.bootstrap(app_component_1.AppComponent, [router_1.ROUTER_PROVIDERS, [http_1.HTTP_PROVIDERS, lesson_service_1.LessonService, localStorage_service_1.LocalStorageService, dictionary_service_1.DictionaryService]]);
     }
   };
 });

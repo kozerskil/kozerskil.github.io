@@ -1,9 +1,9 @@
 {"results":[
-	{"title":"Phrasal Verbs 1", "name": "ang1", "id":"6fa8cadf"},
-	{"title":"Irregular Verbs", "name": "ang6", "id":"783105fa"},
-	{"title":"Phrasal Verbs 2", "name": "ang3", "id":"73127c1d"},
-	{"title":"Phrasal Verbs 3", "name": "ang4", "id":"74c754bc"},
-	{"title":"idioms", "name": "ang5", "id":"767c2d5b"},
+	{"title":"Phrasal Verbs 1", "name": "ang1", "id":"6fa8cadf", "dict": true},
+	{"title":"Irregular Verbs", "name": "ang6", "id":"783105fa", "dict": true},
+	{"title":"Phrasal Verbs 2", "name": "ang3", "id":"73127c1d", "dict": true},
+	{"title":"Phrasal Verbs 3", "name": "ang4", "id":"74c754bc", "dict": true},
+	{"title":"idioms", "name": "ang5", "id":"767c2d5b", "dict": true},
 	{"title":"Banking", "name": "ang7", "id":"79e5de99", "icon": "money"},
 	{"title":"Financial", "name": "ang8", "id":"7b9ab738", "icon": "calculator"},
 	{"title":"Business", "name": "ang2", "id":"715da37e"}
