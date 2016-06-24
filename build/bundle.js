@@ -16191,7 +16191,7 @@ $__System.register("18", ["3", "19"], function(exports_1, context_1) {
           });
         };
         DictionaryScreenComponent = __decorate([core_1.Component({
-          templateUrl: 'app/dictionary/dictionary-screen.component.html',
+          template: "\n    <div class=\"ui container\">\n        <div class=\"ui icon fluid input\">\n            <input type=\"text\" placeholder=\"szukaj...\" [ngModel]=\"search\" (ngModelChange)=\"onChange($event)\">\n            <i class=\"search icon\"></i>\n        </div>\n        <div class=\"ui container\" style=\"position: absolute; height: calc(100% - 10em); overflow: auto; bottom: 0;\">\n            <dl *ngFor=\"let lesson of lessons\">\n                <dt>{{lesson.term}}</dt>\n                <dd>{{lesson.description}}</dd>\n                <dd>{{lesson.desc1}}</dd>\n                <dd>{{lesson.desc2}}</dd>\n            </dl>\n        </div>\n    </div>\n    ",
           styles: [':host { display: block; }']
         }), __param(0, core_1.Inject(dictionary_service_1.DictionaryService)), __metadata('design:paramtypes', [dictionary_service_1.DictionaryService])], DictionaryScreenComponent);
         return DictionaryScreenComponent;
