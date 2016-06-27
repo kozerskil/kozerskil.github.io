@@ -1,5 +1,6 @@
 {
-  "name": "fiszki",
+  "name": "kurczakowe fiszki",
+  "short_name": "fiszki",
   "icons": [
     {
       "src": "assets/favicon-36.png",
