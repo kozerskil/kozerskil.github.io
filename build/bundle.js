@@ -15726,8 +15726,12 @@ $__System.register("14", ["13"], function(exports_1, context_1) {
         Memos.prototype.nextPack = function() {
           this.config.lessonNum++;
           this.config.lessonNum %= this.config.lessonCount;
-          this.config.cardCount = this.config.perLesson;
           this.indices = this.createIndices(this.config);
+          this.config.cardCount = this.indices.size();
+        };
+        Memos.prototype.samePack = function() {
+          this.indices = this.createIndices(this.config);
+          this.config.cardCount = this.indices.size();
         };
         Memos.prototype.createIndices = function(config) {
           var random = this.seedrandom(config.seed);
@@ -15861,6 +15865,11 @@ $__System.register("15", ["3", "10", "12", "f", "16", "e", "14"], function(expor
             _this.memo = _this.memos.first();
             _this.serialize();
           };
+          this.samePack = function() {
+            _this.memos.samePack();
+            _this.memo = _this.memos.first();
+            _this.serialize();
+          };
           this.onAnswer = function(answer) {
             _this.memo = _this.memos.next(answer);
             _this.serialize();
@@ -15874,9 +15883,9 @@ $__System.register("15", ["3", "10", "12", "f", "16", "e", "14"], function(expor
           this.storage.setObject(this.lesson.id, this.config);
         };
         LessonScreenComponent = __decorate([core_1.Component({
-          template: "\n    <div class=\"ui grid container\" *ngIf=\"lesson\">\n        <div class=\"centered row\">\n            <h3 class=\"ui header\">\n                <img src=\"assets/chicken.svg\">\n                <div class=\"content\">\n                {{lesson.title}}\n                <div class=\"sub header\">\n                    Paczka {{config.lessonNum + 1}}/{{config.lessonCount}}, jeszcze {{config.cardCount}} {{\"kart\" | declension:config.cardCount}}\n                </div>\n                </div>\n            </h3>\n        </div>\n        <div class=\"centered row\">\n        <div class=\"ui three basic tiny buttons\">\n            <button class=\"ui button\" (click)=\"nextPack()\">Nast\u0119pna paczka</button>\n            <button class=\"ui button\" (click)=\"randomize()\">Pomieszaj karty</button>\n            <a class=\"ui button\" [routerLink]=\"['/repetition', id]\">Powt\u00F3rka lekcji</a>\n            </div>\n        </div>\n        <div class=\"centered row\" *ngIf=\"memo\">\n            <memo-card [memo]=\"memo\" (onAnswer)='onAnswer($event.answer)'></memo-card>\n        </div>\n        <div class=\"centered row\" *ngIf=\"!memo\">\n            <div class=\"ui circular segment\">\n                <h2 class=\"ui header\">\n                    <img class=\"ui image\" src=\"assets/chicken.svg\">\n                    <div class=\"sub header\">Paczka zapami\u0119tana :)</div>\n                </h2>\n            </div>\n        </div>\n    </div>\n    ",
+          template: "\n    <div class=\"ui grid container\" *ngIf=\"lesson\">\n        <div class=\"centered row\">\n            <h3 class=\"ui header\">\n                <img src=\"assets/chicken.svg\">\n                <div class=\"content\">\n                    {{lesson.title}}\n                    <div class=\"sub header\">\n                        Paczka {{config.lessonNum + 1}}/{{config.lessonCount}}, jeszcze {{config.cardCount}} {{\"kart\" | declension:config.cardCount}}\n                    </div>\n                </div>\n            </h3>\n        </div>\n        <div class=\"centered row\">\n        <div class=\"ui three basic tiny buttons\">\n            <button class=\"ui button\" (click)=\"nextPack()\">Nast\u0119pna paczka</button>\n            <button class=\"ui button\" (click)=\"randomize()\">Pomieszaj karty</button>\n            <a class=\"ui button\" [routerLink]=\"['/repetition', id]\">Powt\u00F3rka lekcji</a>\n            </div>\n        </div>\n        <div class=\"centered row\" *ngIf=\"memo\">\n            <memo-card [memo]=\"memo\" (onAnswer)='onAnswer($event.answer)'></memo-card>\n        </div>\n        <div class=\"centered row\" *ngIf=\"!memo\">\n            <div class=\"ui circular raised segment\" (click)=\"samePack()\">\n                <h2 class=\"ui header\">\n                    <img class=\"ui image\" src=\"assets/chicken.svg\">\n                    <div class=\"sub header\">Paczka zapami\u0119tana :)</div>\n                    <div class=\"sub header\">Powtarzamy?</div>\n                </h2>\n            </div>\n        </div>\n    </div>\n    ",
           directives: [memo_card_component_1.MemoCardComponent, router_1.ROUTER_DIRECTIVES],
-          styles: ['.ui.circular.segment { width: 16em; height: 16em; }', '.ui.circular.segment h2 { margin-top: 1em; }', '.ui.circular.segment img { width: 2em; }', '.ui.header .content { text-align: initial; }'],
+          styles: ['.ui.circular.segment { width: 16em; height: 16em; cursor: pointer; }', '.ui.header .content { text-align: initial; }'],
           pipes: [declension_pipe_1.DeclensionPipe]
         }), __param(0, core_1.Inject(lesson_service_1.LessonService)), __param(1, core_1.Inject(localStorage_service_1.LocalStorageService)), __metadata('design:paramtypes', [lesson_service_1.LessonService, localStorage_service_1.LocalStorageService])], LessonScreenComponent);
         return LessonScreenComponent;
@@ -15969,7 +15978,7 @@ $__System.register("16", ["3", "d"], function(exports_1, context_1) {
         __decorate([core_1.Output(), __metadata('design:type', Object)], MemoCardComponent.prototype, "onAnswer", void 0);
         MemoCardComponent = __decorate([core_1.Component({
           selector: 'memo-card',
-          template: "\n    <div class=\"ui card\" (click)=\"answer = true\" @someAniTrigger=\"''+!answer\">\n        <div class=\"center aligned content\" *ngIf=\"uiMemo\">\n            <div class=\"header\">{{uiMemo.a2}}</div>\n            <div class=\"description\">{{uiMemo.a4}}</div>\n        </div>\n        <div class=\"content\" *ngIf=\"!uiMemo\">\n            <div class=\"ui active loader\"></div>\n        </div>\n        <div class=\"extra content\">\n            <div class=\"ui check button\">sprawd\u017A</div>\n        </div>\n    </div>\n    <div class=\"ui card\" (click)=\"answer = false\" (swipeleft)=\"response(true)\" (swiperight)=\"response(false)\"  @someAniTrigger=\"''+answer\">\n        <div class=\"center aligned content\" *ngIf=\"uiMemo\">\n            <div class=\"header\">{{uiMemo.a1}}</div>\n            <div class=\"description\">{{uiMemo.a3}}</div>\n        </div>\n        <div class=\"content\" *ngIf=\"!uiMemo\">\n            <div class=\"ui active loader\"></div>\n        </div>\n        <div class=\"extra content\">\n            <div class=\"ui two buttons\">\n                <div class=\"ui ok button\" (click)=\"response(true)\">pami\u0119tam</div>\n                <div class=\"ui nok button\" (click)=\"response(false)\">nie pami\u0119tam</div>\n            </div>\n        </div>\n    </div>\n    ",
+          template: "\n    <div class=\"ui card\" (click)=\"answer = true\" (swipeleft)=\"answer = true\" (swiperight)=\"answer = true\" @someAniTrigger=\"''+!answer\">\n        <div class=\"center aligned content\" *ngIf=\"uiMemo\">\n            <div class=\"header\">{{uiMemo.a2}}</div>\n            <div class=\"description\">{{uiMemo.a4}}</div>\n        </div>\n        <div class=\"content\" *ngIf=\"!uiMemo\">\n            <div class=\"ui active loader\"></div>\n        </div>\n        <div class=\"extra content\">\n            <div class=\"ui check button\">sprawd\u017A</div>\n        </div>\n    </div>\n    <div class=\"ui card\" (click)=\"answer = false\" (swipeleft)=\"response(true)\" (swiperight)=\"response(false)\"  @someAniTrigger=\"''+answer\">\n        <div class=\"center aligned content\" *ngIf=\"uiMemo\">\n            <div class=\"header\">{{uiMemo.a1}}</div>\n            <div class=\"description\">{{uiMemo.a3}}</div>\n        </div>\n        <div class=\"content\" *ngIf=\"!uiMemo\">\n            <div class=\"ui active loader\"></div>\n        </div>\n        <div class=\"extra content\">\n            <div class=\"ui two buttons\">\n                <div class=\"ui ok button\" (click)=\"response(true)\">pami\u0119tam</div>\n                <div class=\"ui nok button\" (click)=\"response(false)\">nie pami\u0119tam</div>\n            </div>\n        </div>\n    </div>\n    ",
           styles: ['.ui.card { width: 100%; height: 100%; }', ':host { width: 290px; height: 15em; position: relative; display: block; }', '.ui.card { position: absolute; margin: 0; }', '.content { position: relative; }', '.extra.content .button { white-space: nowrap; background-color: #a27e0a; color: #fff; }', '.extra.content .button:hover { color: rgba(255,255,255,0.6); }', '.extra.content .nok.button { background-color: #c61a1a; }', '.extra.content .check.button { width: 100%; }'],
           animations: [core_1.trigger('someAniTrigger', [core_1.state('false', core_1.style({
             transform: 'rotateY(180deg)',
@@ -16131,7 +16140,7 @@ $__System.register("17", ["3", "10", "12", "f", "16", "e"], function(exports_1, 
         RepetitionScreenComponent = __decorate([core_1.Component({
           template: "\n    <div class=\"ui grid container\" *ngIf=\"lesson\">\n        <div class=\"centered row\">\n            <h3 class=\"ui header\">\n                <img src=\"assets/chicken.svg\">\n                <div class=\"content\">\n                    {{lesson.title}}\n                    <div class=\"sub header\">\n                        jeszcze {{cardCount}} {{\"kart\" | declension:cardCount}}\n                    </div>\n                </div>\n            </h3>\n        </div>\n        <div class=\"centered row\" *ngIf=\"memo\">\n            <memo-card [memo]=\"memo\" (onAnswer)='onAnswer($event.answer)'></memo-card>\n        </div>\n        <div class=\"centered row\" *ngIf=\"!memo\">\n            <div class=\"ui circular segment\">\n                <h2 class=\"ui header\">\n                    <img class=\"ui image\" src=\"assets/chicken.svg\">\n                    <div class=\"sub header\">Lekcja zapami\u0119tana :)</div>\n                </h2>\n            </div>\n        </div>\n    </div>\n    ",
           directives: [memo_card_component_1.MemoCardComponent, router_1.ROUTER_DIRECTIVES],
-          styles: ['.ui.circular.segment{width: 16em;height: 16em;}', '.ui.circular.segment h2{margin-top: 1em;}', '.ui.header .content { text-align: initial; }'],
+          styles: ['.ui.circular.segment { width: 16em; height: 16em; }', '.ui.header .content { text-align: initial; }'],
           pipes: [declension_pipe_1.DeclensionPipe]
         }), __param(0, core_1.Inject(lesson_service_1.LessonService)), __param(1, core_1.Inject(localStorage_service_1.LocalStorageService)), __metadata('design:paramtypes', [lesson_service_1.LessonService, localStorage_service_1.LocalStorageService])], RepetitionScreenComponent);
         return RepetitionScreenComponent;
@@ -16231,13 +16240,18 @@ $__System.register("1a", ["3", "10"], function(exports_1, context_1) {
     }],
     execute: function() {
       NavigationComponent = (function() {
-        function NavigationComponent() {}
+        function NavigationComponent(router) {
+          var _this = this;
+          this.router = router;
+          router.changes.subscribe(function(x) {
+            return _this.path = window.location.pathname;
+          });
+        }
         NavigationComponent = __decorate([core_1.Component({
           selector: 'nav',
-          template: "\n    <div class=\"ui text container\">\n        <div class=\"item header\">\n            <img class=\"logo\" src=\"assets/chicken_head.svg\">\n            fiszki\n        </div>\n        <a class=\"item\" [routerLink]=\"['/']\">lekcje</a>\n        <a class=\"item\" [routerLink]=\"['/dictionary']\">s\u0142owniczek</a>\n    </div>\n    ",
-          directives: [router_1.ROUTER_DIRECTIVES],
-          styles: ['.item.router-link-active { background: rgba(0, 0, 0, 0.03); }', '.header img.logo { margin-right: 1.5em; }']
-        }), __metadata('design:paramtypes', [])], NavigationComponent);
+          template: "\n    <div class=\"ui text container\">\n        <a class=\"item header\" [routerLink]=\"['/']\">\n            <img class=\"logo\" src=\"assets/chicken_head.svg\">\n        </a>\n        <a class=\"item\" [routerLink]=\"['/']\" [ngClass]=\"{active: path === '/'}\">lekcje</a>\n        <a class=\"item\" [routerLink]=\"['/dictionary']\" [ngClass]=\"{active: path === '/dictionary'}\">s\u0142owniczek</a>\n    </div>\n    ",
+          directives: [router_1.ROUTER_DIRECTIVES]
+        }), __metadata('design:paramtypes', [router_1.Router])], NavigationComponent);
         return NavigationComponent;
       }());
       exports_1("NavigationComponent", NavigationComponent);
