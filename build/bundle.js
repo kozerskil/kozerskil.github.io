@@ -18242,7 +18242,6 @@ $__System.register("12", ["3", "1e", "7", "1f"], function(exports_1, context_1) 
         };
         LessonService.prototype.getLesson = function(name) {
           var params = new http_1.URLSearchParams();
-          params.set("x", "1");
           return this.http.get('data/' + name + '.json', {search: params}).map(function(response) {
             return response.json() || {};
           }).catch(this.handleError);
@@ -38085,7 +38084,6 @@ $__System.register("19", ["3", "1e", "7", "1f"], function(exports_1, context_1) 
         };
         DictionaryService.prototype.getLesson = function(name) {
           var params = new http_1.URLSearchParams();
-          params.set("x", "1");
           return this.http.get('data/' + name + '.json', {search: params}).map(function(response) {
             return response.json() || {};
           }).catch(this.handleError);

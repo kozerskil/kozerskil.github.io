@@ -1,0 +1,36 @@
+CACHE MANIFEST
+# http://docs.webplatform.org/wiki/apis/appcache/ApplicationCache
+
+CACHE:
+/index.html
+/config.js
+/node_modules/reflect-metadata/Reflect.js
+/node_modules/core-js/client/shim.min.js
+/node_modules/zone.js/dist/zone.js
+/node_modules/systemjs/dist/system.src.js
+/node_modules/semantic-ui/dist/semantic.css
+/node_modules/semantic-ui/dist/themes/default/assets/fonts/icons.woff2
+/assets/chicken.svg
+/build/bundle.js
+/assets/chicken_head.svg
+/assets/favicon-192.png
+/data/ang.json
+/data/ang1.json
+/data/ang2.json
+/data/ang3.json
+/data/ang4.json
+/data/ang5.json
+/data/ang6.json
+/data/ang7.json
+/data/ang8.json
+
+NETWORK:
+*
+http://*
+https://*
+
+FALLBACK:
+/assets/favicon-*.png /assets/favicon-192.png
+
+SETTINGS:
+prefer-online
