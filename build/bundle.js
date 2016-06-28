@@ -15518,8 +15518,8 @@ $__System.register("11", ["3", "c", "12"], function(exports_1, context_1) {
           });
         };
         LessonsScreenComponent = __decorate([core_1.Component({
-          template: "\n    <div class=\"ui four column doubling stackable grid container\">\n    <div class=\"column\" *ngFor='let lesson of lessons'>\n        <lesson-card [lesson]='lesson' @animation=\"show\"></lesson-card>\n    </div>\n    </div>\n    ",
-          styles: [':host {display: block;}'],
+          template: "\n    <div class=\"ui grid container\">\n        <div class=\"twelve wide computer sixteen wide tablet column\">\n            <div class=\"ui three column stackable grid\">\n                <div class=\"column\" *ngFor='let lesson of lessons'>\n                    <lesson-card [lesson]='lesson' @animation=\"show\"></lesson-card>\n                </div>\n            </div>\n        </div>\n        <div class=\"four wide computer only column\">\n            <img class=\"ui centered image\" src=\"assets/chicken.svg\">\n        </div>\n    </div>\n    ",
+          styles: [':host { display: block; }', '.computerx.only.column { background: #eee; }'],
           directives: [lesson_card_component_1.LessonCardComponent],
           animations: [core_1.trigger('animation', [core_1.state('show', core_1.style({opacity: 1})), core_1.transition('void => *', [core_1.style({opacity: 0}), core_1.animate('0.1s ease-in-out')])])]
         }), __param(0, core_1.Inject(lesson_service_1.LessonService)), __metadata('design:paramtypes', [lesson_service_1.LessonService])], LessonsScreenComponent);
