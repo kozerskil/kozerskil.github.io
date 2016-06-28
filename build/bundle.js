@@ -15505,17 +15505,23 @@ $__System.register("11", ["3", "c", "12"], function(exports_1, context_1) {
       LessonsScreenComponent = (function() {
         function LessonsScreenComponent(service) {
           this.service = service;
+          this.lessons = [];
         }
         LessonsScreenComponent.prototype.ngOnInit = function() {
           var _this = this;
           this.service.getData().subscribe(function(data) {
-            return _this.lessons = data;
+            return data.forEach(function(x, k) {
+              return setTimeout(function() {
+                return _this.lessons.push(x);
+              }, 100 * k);
+            });
           });
         };
         LessonsScreenComponent = __decorate([core_1.Component({
-          template: "\n    <div class=\"ui four column doubling stackable grid container\">\n    <div class=\"column\" *ngFor='let lesson of lessons'>\n        <lesson-card [lesson]='lesson'></lesson-card>\n    </div>\n    </div>\n    ",
+          template: "\n    <div class=\"ui four column doubling stackable grid container\">\n    <div class=\"column\" *ngFor='let lesson of lessons'>\n        <lesson-card [lesson]='lesson' @animation=\"show\"></lesson-card>\n    </div>\n    </div>\n    ",
           styles: [':host {display: block;}'],
-          directives: [lesson_card_component_1.LessonCardComponent]
+          directives: [lesson_card_component_1.LessonCardComponent],
+          animations: [core_1.trigger('animation', [core_1.state('show', core_1.style({opacity: 1})), core_1.transition('void => *', [core_1.style({opacity: 0}), core_1.animate('0.1s ease-in-out')])])]
         }), __param(0, core_1.Inject(lesson_service_1.LessonService)), __metadata('design:paramtypes', [lesson_service_1.LessonService])], LessonsScreenComponent);
         return LessonsScreenComponent;
       }());
@@ -15978,9 +15984,9 @@ $__System.register("16", ["3", "d"], function(exports_1, context_1) {
         __decorate([core_1.Output(), __metadata('design:type', Object)], MemoCardComponent.prototype, "onAnswer", void 0);
         MemoCardComponent = __decorate([core_1.Component({
           selector: 'memo-card',
-          template: "\n    <div class=\"ui card\" (click)=\"answer = true\" (swipeleft)=\"answer = true\" (swiperight)=\"answer = true\" @someAniTrigger=\"''+!answer\">\n        <div class=\"center aligned content\" *ngIf=\"uiMemo\">\n            <div class=\"header\">{{uiMemo.a2}}</div>\n            <div class=\"description\">{{uiMemo.a4}}</div>\n        </div>\n        <div class=\"content\" *ngIf=\"!uiMemo\">\n            <div class=\"ui active loader\"></div>\n        </div>\n        <div class=\"extra content\">\n            <div class=\"ui check button\">sprawd\u017A</div>\n        </div>\n    </div>\n    <div class=\"ui card\" (click)=\"answer = false\" (swipeleft)=\"response(true)\" (swiperight)=\"response(false)\"  @someAniTrigger=\"''+answer\">\n        <div class=\"center aligned content\" *ngIf=\"uiMemo\">\n            <div class=\"header\">{{uiMemo.a1}}</div>\n            <div class=\"description\">{{uiMemo.a3}}</div>\n        </div>\n        <div class=\"content\" *ngIf=\"!uiMemo\">\n            <div class=\"ui active loader\"></div>\n        </div>\n        <div class=\"extra content\">\n            <div class=\"ui two buttons\">\n                <div class=\"ui ok button\" (click)=\"response(true)\">pami\u0119tam</div>\n                <div class=\"ui nok button\" (click)=\"response(false)\">nie pami\u0119tam</div>\n            </div>\n        </div>\n    </div>\n    ",
+          template: "\n    <div class=\"ui card\" (click)=\"answer = true\" (swipeleft)=\"answer = true\" (swiperight)=\"answer = true\" @animation=\"''+!answer\">\n        <div class=\"center aligned content\" *ngIf=\"uiMemo\">\n            <div class=\"header\">{{uiMemo.a2}}</div>\n            <div class=\"description\">{{uiMemo.a4}}</div>\n        </div>\n        <div class=\"content\" *ngIf=\"!uiMemo\">\n            <div class=\"ui active loader\"></div>\n        </div>\n        <div class=\"extra content\">\n            <div class=\"ui check button\">sprawd\u017A</div>\n        </div>\n    </div>\n    <div class=\"ui card\" (click)=\"answer = false\" (swipeleft)=\"response(true)\" (swiperight)=\"response(false)\"  @animation=\"''+answer\">\n        <div class=\"center aligned content\" *ngIf=\"uiMemo\">\n            <div class=\"header\">{{uiMemo.a1}}</div>\n            <div class=\"description\">{{uiMemo.a3}}</div>\n        </div>\n        <div class=\"content\" *ngIf=\"!uiMemo\">\n            <div class=\"ui active loader\"></div>\n        </div>\n        <div class=\"extra content\">\n            <div class=\"ui two buttons\">\n                <div class=\"ui ok button\" (click)=\"response(true)\">pami\u0119tam</div>\n                <div class=\"ui nok button\" (click)=\"response(false)\">nie pami\u0119tam</div>\n            </div>\n        </div>\n    </div>\n    ",
           styles: ['.ui.card { width: 100%; height: 100%; }', ':host { width: 290px; height: 15em; position: relative; display: block; }', '.ui.card { position: absolute; margin: 0; }', '.content { position: relative; }', '.extra.content .button { white-space: nowrap; background-color: #a27e0a; color: #fff; }', '.extra.content .button:hover { color: rgba(255,255,255,0.6); }', '.extra.content .nok.button { background-color: #c61a1a; }', '.extra.content .check.button { width: 100%; }'],
-          animations: [core_1.trigger('someAniTrigger', [core_1.state('false', core_1.style({
+          animations: [core_1.trigger('animation', [core_1.state('false', core_1.style({
             transform: 'rotateY(180deg)',
             'z-index': '0',
             'backface-visibility': 'hidden'

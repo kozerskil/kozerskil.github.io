@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pl" manifest="/kurczak.appcache">
+<html lang="pl" manifest="kurczak.appcache">
 
 <head>
   <base href="/">
@@ -39,23 +39,18 @@
         background-color: rgba(237, 184, 11, 0.5);
       }
       
-      main,
-      .grid {
-        height: 100%;
-        margin: 0;
+      .container {
+        padding-top: 10%;
       }
       
       .ui.header {
         color: #c61a1a;
       }
     </style>
-    <div class="ui grid">
-      <div class="centered row">
-        <img class="ui image" src="assets/chicken.svg">
-      </div>
-      <div class="centered row">
-        <h1 class="ui header">kurczakowe fiszki</h1>
-      </div>
+    <div class="ui container">
+      <img class="ui centered image" src="assets/chicken.svg">
+      <h1 class="ui centered header">kurczakowe fiszki</h1>
+    </div>
     </div>
   </main>
 </body>
