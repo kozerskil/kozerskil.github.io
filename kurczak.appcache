@@ -14,7 +14,6 @@ CACHE:
 /build/bundle.js
 /assets/chicken_head.svg
 /assets/favicon-192.png
-/data/ang.json
 /data/ang1.json
 /data/ang2.json
 /data/ang3.json
@@ -23,8 +22,26 @@ CACHE:
 /data/ang6.json
 /data/ang7.json
 /data/ang8.json
+/data/battab01.json
+/data/battab02.json
+/data/battab03.json
+/data/battab04.json
+/data/battab05.json
+/data/battab06.json
+/data/battab07.json
+/data/battab08.json
+/data/battab09.json
+/data/battab10.json
+/data/battab11.json
+/data/battab12.json
+/data/battab13.json
+/data/battab14.json
+/data/battab15.json
+/data/battab16.json
+/data/battab17.json
 
 NETWORK:
+/data/ang.json
 *
 http://*
 https://*
