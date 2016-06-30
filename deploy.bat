@@ -1,1 +1,1 @@
-git fetch & touch manifest.json & git add . & git ci -m "ok" & git push
+git fetch & touch kurczak.appcache & git add . & git ci -m "ok" & git push
