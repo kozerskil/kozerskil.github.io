@@ -16,6 +16,7 @@ System.config({
             "build/app/lessons/shared/memo-card.component.js",
             "build/app/lessons/shared/memos.js",
             "build/app/other/other.component.js",
+            "build/app/shared/dropdown-button.component.js",
             "build/app/shared/localStorage.service.js",
             "build/app/shared/navigation.component.js",
             "build/app/shared/rxjs-operators.js",
