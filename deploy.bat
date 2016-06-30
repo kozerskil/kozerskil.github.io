@@ -1,0 +1,1 @@
+git fetch & touch manifest.json & git add . & git ci -m "ok" & git push
