@@ -1,80 +1,76 @@
 <!doctype html>
-<html>
-  <head>
-    <!-- Using the ingenious GitHub Pages SPA hack from
-    http://www.backalleycoder.com/2016/05/13/sghpa-the-single-page-app-hack-for-github-pages/ -->
-    <script>
-      sessionStorage.redirect = location.pathname;
-    </script>
-    <meta http-equiv="refresh" content="0;URL='/'"></meta>
-  </head>
-  <body>
-  </body>
+<html lang="pl">
+
+<head>
+  <base href="/">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>fiszki</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" sizes="192x192" href="assets/favicon-192.png">
+  <link rel="icon" sizes="128x128" href="assets/favicon-128.png">
+  <link rel="icon" sizes="125x125" href="assets/favicon-125.png">
+  <link rel="icon" sizes="48x48" href="assets/favicon-48.png">
+  <link rel="icon" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/ios-180.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="assets/ios-167.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="assets/ios-152.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="assets/ios-120.png">
+  <link rel="apple-touch-icon" href="assets/ios-120.png">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#a27e0a">
+  <link rel="stylesheet" class="ui" href="node_modules/semantic-ui/dist/semantic.css" media="all">
+  <script src="node_modules/core-js/client/shim.min.js"></script>
+  <script src="node_modules/zone.js/dist/zone.js"></script>
+  <script src="node_modules/reflect-metadata/Reflect.js"></script>
+  <script src="node_modules/systemjs/dist/system.src.js"></script>
+  <script src="config.js"></script>
+  <script>
+    System.import('app').catch(function(err){ console.error(err); });
+  </script>
+  <style>
+    body {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <style>
+      body {
+        background-color: rgba(237, 184, 11, 0.5);
+      }
+      
+      main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+      }
+      
+      div {
+        height: 50%;
+      }
+      
+      .ui.image {
+        width: 100%;
+        height: 100%;
+      }
+      
+      .ui.header {
+        color: #c61a1a;
+      }
+    </style>
+    <div>
+      <img class="ui image" src="assets/chicken.svg">
+      <h1 class="ui header">kurczakowe fiszki</h1>
+    </div>
+    </div>
+    </div>
+  </main>
+</body>
+
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
