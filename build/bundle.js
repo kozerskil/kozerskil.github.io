@@ -15530,61 +15530,6 @@ $__System.register("11", ["3", "c", "12"], function(exports_1, context_1) {
   };
 });
 
-$__System.register("13", ["3"], function(exports_1, context_1) {
-  "use strict";
-  var __moduleName = context_1 && context_1.id;
-  var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
-    var c = arguments.length,
-        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-        d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
-      r = Reflect.decorate(decorators, target, key, desc);
-    else
-      for (var i = decorators.length - 1; i >= 0; i--)
-        if (d = decorators[i])
-          r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-  };
-  var __metadata = (this && this.__metadata) || function(k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
-      return Reflect.metadata(k, v);
-  };
-  var core_1;
-  var DropdownButtonComponent;
-  return {
-    setters: [function(core_1_1) {
-      core_1 = core_1_1;
-    }],
-    execute: function() {
-      DropdownButtonComponent = (function() {
-        function DropdownButtonComponent() {
-          this.show = false;
-        }
-        DropdownButtonComponent.prototype.toggle = function() {
-          if (this.show) {
-            this.hide();
-          } else {
-            this.show = true;
-          }
-        };
-        DropdownButtonComponent.prototype.hide = function() {
-          var _this = this;
-          setTimeout(function() {
-            return _this.show = false;
-          }, 100);
-        };
-        DropdownButtonComponent = __decorate([core_1.Component({
-          selector: 'dropdown-button',
-          template: "\n<div class=\"ui circular icon top left pointing dropdown button\" (click)=\"toggle()\" [ngClass]=\"{active: show}\" tabindex=\"-1\" (blur)=\"hide()\">\n    <i class=\"settings icon\"></i>\n    <div class=\"menu\" [ngClass]=\"{show: show}\">\n        <ng-content></ng-content>\n    </div>\n</div>\n    ",
-          styles: ['.show { display: block !important; }', '.ui.icon.button { padding: 0.785714em; }']
-        }), __metadata('design:paramtypes', [])], DropdownButtonComponent);
-        return DropdownButtonComponent;
-      }());
-      exports_1("DropdownButtonComponent", DropdownButtonComponent);
-    }
-  };
-});
-
 (function() {
 var define = $__System.amdDefine;
 (function(pool, math) {
@@ -15729,14 +15674,14 @@ var define = $__System.amdDefine;
       nodecrypto = require('crypto');
     } catch (ex) {}
   } else if ((typeof define) == 'function' && define.amd) {
-    define("14", [], function() {
+    define("13", [], function() {
       return seedrandom;
     });
   }
 })([], Math);
 
 })();
-$__System.register("15", ["14"], function(exports_1, context_1) {
+$__System.register("14", ["13"], function(exports_1, context_1) {
   "use strict";
   var __moduleName = context_1 && context_1.id;
   var Memos,
@@ -15846,7 +15791,7 @@ $__System.register("15", ["14"], function(exports_1, context_1) {
   };
 });
 
-$__System.register("16", ["3", "10", "12", "f", "17", "13", "e", "15"], function(exports_1, context_1) {
+$__System.register("15", ["3", "10", "12", "f", "16", "17", "e", "14"], function(exports_1, context_1) {
   "use strict";
   var __moduleName = context_1 && context_1.id;
   var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
@@ -15947,9 +15892,9 @@ $__System.register("16", ["3", "10", "12", "f", "17", "13", "e", "15"], function
           this.storage.setObject(this.lesson.id, this.config);
         };
         LessonScreenComponent = __decorate([core_1.Component({
-          template: "\n<div class=\"ui grid container\" *ngIf=\"lesson\">\n    <div class=\"centered row\">\n        <h3 class=\"ui header\">\n            <img src=\"assets/chicken.svg\">\n            <div class=\"content\">\n                {{lesson.title}}\n                <div class=\"sub header\">\n                    <dropdown-button>\n                        <div class=\"item\" (click)=\"nextPack()\">Nast\u0119pna paczka</div>\n                        <div class=\"item\" (click)=\"randomize()\">Pomieszaj karty</div>\n                        <a class=\"item\" [routerLink]=\"['/repetition', id]\">Powt\u00F3rka lekcji</a>\n                        <a class=\"item\" target=\"_blank\" href=\"https://docs.google.com/forms/d/1bEMas5dOxq1CoGMRbxKnXPtL1eSYNP8hW-T3eKZALmg/viewform?entry.1693669629={{lesson.id}};{{memo?.id}}\">Zg\u0142o\u015B problem</a>\n                    </dropdown-button>\n                    Paczka {{config.lessonNum + 1}}/{{config.lessonCount}}, jeszcze {{config.cardCount}} {{\"kart\" | declension:config.cardCount}}\n                </div>\n            </div>\n        </h3>\n    </div>\n    <div class=\"centered row\" *ngIf=\"memo\">\n        <memo-card [memo]=\"memo\" (onAnswer)='onAnswer($event.answer)'></memo-card>\n    </div>\n    <div class=\"centered row\" *ngIf=\"!memo\">\n        <div class=\"ui circular raised segment\" (click)=\"samePack()\">\n            <h2 class=\"ui header\">\n                <img class=\"ui image\" src=\"assets/chicken.svg\">\n                <div class=\"sub header\">Paczka zapami\u0119tana :)</div>\n                <div class=\"sub header\">Powtarzamy?</div>\n            </h2>\n        </div>\n    </div>\n    <div class=\"centered row\" *ngIf=\"!memo\">\n        <div class=\"ui four basic tiny buttons\">\n            <button class=\"ui button\" (click)=\"samePack()\">Powt\u00F3rz paczk\u0119</button>\n            <button class=\"ui button\" (click)=\"nextPack()\">Nast\u0119pna paczka</button>\n            <a class=\"ui button\" [routerLink]=\"['/repetition', id]\">Powt\u00F3rka lekcji</a>\n        </div>\n    </div>\n</div>\n    ",
+          template: "\n<div class=\"ui grid container\" *ngIf=\"lesson\">\n    <div class=\"centered row\">\n        <h3 class=\"ui header\">\n            <img src=\"assets/chicken.svg\">\n            <div class=\"content\">\n                {{lesson.title}}\n                <div class=\"sub header\">\n                    <dropdown-button class=\"ui circular icon top left pointing dropdown button\">\n                        <div class=\"item\" (click)=\"nextPack()\">Nast\u0119pna paczka</div>\n                        <div class=\"item\" (click)=\"randomize()\">Pomieszaj karty</div>\n                        <a class=\"item\" [routerLink]=\"['/repetition', id]\">Powt\u00F3rka lekcji</a>\n                        <a class=\"item\" target=\"_blank\" href=\"https://docs.google.com/forms/d/1bEMas5dOxq1CoGMRbxKnXPtL1eSYNP8hW-T3eKZALmg/viewform?entry.1693669629={{lesson.id}};{{memo?.id}}\">Zg\u0142o\u015B problem</a>\n                    </dropdown-button>\n                    Paczka {{config.lessonNum + 1}}/{{config.lessonCount}}, jeszcze {{config.cardCount}} {{\"kart\" | declension:config.cardCount}}\n                </div>\n            </div>\n        </h3>\n    </div>\n    <div class=\"centered row\" *ngIf=\"memo\">\n        <memo-card [memo]=\"memo\" (onAnswer)='onAnswer($event.answer)'></memo-card>\n    </div>\n    <div class=\"centered row\" *ngIf=\"!memo\">\n        <div class=\"ui circular raised segment\" (click)=\"samePack()\">\n            <h2 class=\"ui header\">\n                <img class=\"ui image\" src=\"assets/chicken.svg\">\n                <div class=\"sub header\">Paczka zapami\u0119tana :)</div>\n                <div class=\"sub header\">Powtarzamy?</div>\n            </h2>\n        </div>\n    </div>\n    <div class=\"centered row\" *ngIf=\"!memo\">\n        <div class=\"ui four basic tiny buttons\">\n            <button class=\"ui button\" (click)=\"samePack()\">Powt\u00F3rz paczk\u0119</button>\n            <button class=\"ui button\" (click)=\"nextPack()\">Nast\u0119pna paczka</button>\n            <a class=\"ui button\" [routerLink]=\"['/repetition', id]\">Powt\u00F3rka lekcji</a>\n        </div>\n    </div>\n</div>\n    ",
           directives: [memo_card_component_1.MemoCardComponent, dropdown_button_component_1.DropdownButtonComponent, router_1.ROUTER_DIRECTIVES],
-          styles: ['.ui.circular.segment { width: 16em; height: 16em; cursor: pointer; }', '.ui.header .content { text-align: initial; max-width: calc(100% - 2.692em); }'],
+          styles: ['.ui.circular.segment { width: 16em; height: 16em; cursor: pointer; }', '.ui.header .content { text-align: initial; max-width: calc(100% - 2.692em); }', 'dropdown-button.ui.icon.button { padding: 0.785714em; }'],
           pipes: [declension_pipe_1.DeclensionPipe]
         }), __param(0, core_1.Inject(lesson_service_1.LessonService)), __param(1, core_1.Inject(localStorage_service_1.LocalStorageService)), __metadata('design:paramtypes', [lesson_service_1.LessonService, localStorage_service_1.LocalStorageService])], LessonScreenComponent);
         return LessonScreenComponent;
@@ -15993,7 +15938,7 @@ $__System.register("d", [], function(exports_1, context_1) {
   };
 });
 
-$__System.register("17", ["3", "d"], function(exports_1, context_1) {
+$__System.register("16", ["3", "d"], function(exports_1, context_1) {
   "use strict";
   var __moduleName = context_1 && context_1.id;
   var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
@@ -16107,7 +16052,7 @@ $__System.register("e", ["3"], function(exports_1, context_1) {
   };
 });
 
-$__System.register("18", ["3", "10", "12", "f", "17", "e"], function(exports_1, context_1) {
+$__System.register("18", ["3", "10", "12", "f", "16", "e"], function(exports_1, context_1) {
   "use strict";
   var __moduleName = context_1 && context_1.id;
   var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
@@ -16275,7 +16220,66 @@ $__System.register("19", ["3", "1a"], function(exports_1, context_1) {
   };
 });
 
-$__System.register("1b", ["3", "10"], function(exports_1, context_1) {
+$__System.register("17", ["3"], function(exports_1, context_1) {
+  "use strict";
+  var __moduleName = context_1 && context_1.id;
+  var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
+    var c = arguments.length,
+        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+        d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
+      r = Reflect.decorate(decorators, target, key, desc);
+    else
+      for (var i = decorators.length - 1; i >= 0; i--)
+        if (d = decorators[i])
+          r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+  };
+  var __metadata = (this && this.__metadata) || function(k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
+      return Reflect.metadata(k, v);
+  };
+  var core_1;
+  var DropdownButtonComponent;
+  return {
+    setters: [function(core_1_1) {
+      core_1 = core_1_1;
+    }],
+    execute: function() {
+      DropdownButtonComponent = (function() {
+        function DropdownButtonComponent() {
+          this.show = false;
+        }
+        DropdownButtonComponent.prototype.toggle = function() {
+          if (this.show) {
+            this.hide();
+          } else {
+            this.show = true;
+          }
+        };
+        DropdownButtonComponent.prototype.hide = function() {
+          var _this = this;
+          setTimeout(function() {
+            return _this.show = false;
+          }, 100);
+        };
+        __decorate([core_1.HostBinding('class.active'), __metadata('design:type', Boolean)], DropdownButtonComponent.prototype, "show", void 0);
+        __decorate([core_1.HostListener('click'), __metadata('design:type', Function), __metadata('design:paramtypes', []), __metadata('design:returntype', void 0)], DropdownButtonComponent.prototype, "toggle", null);
+        __decorate([core_1.HostListener('blur'), __metadata('design:type', Function), __metadata('design:paramtypes', []), __metadata('design:returntype', void 0)], DropdownButtonComponent.prototype, "hide", null);
+        DropdownButtonComponent = __decorate([core_1.Component({
+          selector: 'dropdown-button',
+          template: "\n<i class=\"ellipsis vertical icon\"></i>\n<div class=\"menu\" [class.show]=\"show\">\n    <ng-content></ng-content>\n</div>\n    ",
+          styles: ['.show { display: block !important; }'],
+          host: {'[tabindex]': '-1'}
+        }), __metadata('design:paramtypes', [])], DropdownButtonComponent);
+        return DropdownButtonComponent;
+      }());
+      exports_1("DropdownButtonComponent", DropdownButtonComponent);
+    }
+  };
+});
+
+$__System.register("1b", ["3", "17", "10"], function(exports_1, context_1) {
   "use strict";
   var __moduleName = context_1 && context_1.id;
   var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
@@ -16295,11 +16299,14 @@ $__System.register("1b", ["3", "10"], function(exports_1, context_1) {
       return Reflect.metadata(k, v);
   };
   var core_1,
+      dropdown_button_component_1,
       router_1;
   var NavigationComponent;
   return {
     setters: [function(core_1_1) {
       core_1 = core_1_1;
+    }, function(dropdown_button_component_1_1) {
+      dropdown_button_component_1 = dropdown_button_component_1_1;
     }, function(router_1_1) {
       router_1 = router_1_1;
     }],
@@ -16314,8 +16321,9 @@ $__System.register("1b", ["3", "10"], function(exports_1, context_1) {
         }
         NavigationComponent = __decorate([core_1.Component({
           selector: 'nav',
-          template: "\n    <div class=\"ui text container\">\n        <a class=\"item header\" [routerLink]=\"['/']\">\n            <img class=\"logo\" src=\"assets/chicken_head.svg\">\n        </a>\n        <a class=\"item\" [routerLink]=\"['/']\" [ngClass]=\"{active: path === '/'}\">lekcje</a>\n        <a class=\"item\" [routerLink]=\"['/dictionary']\" [ngClass]=\"{active: path === '/dictionary'}\">s\u0142owniczek</a>\n    </div>\n    ",
-          directives: [router_1.ROUTER_DIRECTIVES]
+          template: "\n<div class=\"ui text container\">\n  <a class=\"item header\" [routerLink]=\"['/']\">\n    <img class=\"logo\" src=\"assets/chicken_head.svg\">\n  </a>\n  <a class=\"item\" [routerLink]=\"['/']\" [ngClass]=\"{active: path === '/'}\">lekcje</a>\n  <a class=\"item\" [routerLink]=\"['/dictionary']\" [ngClass]=\"{active: path === '/dictionary'}\">s\u0142owniczek</a>\n  <div class=\"right menu\">\n    <dropdown-button class=\"ui top right pointing dropdown item\">\n      <a class=\"item\" href=\"/refresh\">Od\u015Bwie\u017C</a>\n    </dropdown-button>\n  </div>\n</div>\n    ",
+          directives: [dropdown_button_component_1.DropdownButtonComponent, router_1.ROUTER_DIRECTIVES],
+          styles: ['dropdown-button { margin-right: 1em; }']
         }), __metadata('design:paramtypes', [router_1.Router])], NavigationComponent);
         return NavigationComponent;
       }());
@@ -18167,7 +18175,7 @@ $__System.register("1d", ["3", "10"], function(exports_1, context_1) {
   };
 });
 
-$__System.register("1e", ["3", "10", "b", "11", "16", "18", "19", "1b", "1c", "1d"], function(exports_1, context_1) {
+$__System.register("1e", ["3", "10", "b", "11", "15", "18", "19", "1b", "1c", "1d"], function(exports_1, context_1) {
   "use strict";
   var __moduleName = context_1 && context_1.id;
   var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
@@ -18259,6 +18267,9 @@ $__System.register("1e", ["3", "10", "b", "11", "16", "18", "19", "1b", "1c", "1
         }, {
           path: '/design',
           component: design_component_1.DesignComponent
+        }, {
+          path: '/refresh',
+          component: other_component_1.OtherComponent
         }, {
           path: '/*',
           component: other_component_1.OtherComponent
