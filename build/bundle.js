@@ -15560,9 +15560,22 @@ $__System.register("13", ["3"], function(exports_1, context_1) {
         function DropdownButtonComponent() {
           this.show = false;
         }
+        DropdownButtonComponent.prototype.toggle = function() {
+          if (this.show) {
+            this.hide();
+          } else {
+            this.show = true;
+          }
+        };
+        DropdownButtonComponent.prototype.hide = function() {
+          var _this = this;
+          setTimeout(function() {
+            return _this.show = false;
+          }, 100);
+        };
         DropdownButtonComponent = __decorate([core_1.Component({
           selector: 'dropdown-button',
-          template: "\n<div class=\"ui circular icon top left pointing dropdown button\" (click)=\"show = !show\" [ngClass]=\"{active: show}\" tabindex=\"-1\" (blur)=\"show = false\">\n    <i class=\"settings icon\"></i>\n    <div class=\"menu\" [ngClass]=\"{show: show}\">\n        <ng-content></ng-content>\n    </div>\n</div>\n    ",
+          template: "\n<div class=\"ui circular icon top left pointing dropdown button\" (click)=\"toggle()\" [ngClass]=\"{active: show}\" tabindex=\"-1\" (blur)=\"hide()\">\n    <i class=\"settings icon\"></i>\n    <div class=\"menu\" [ngClass]=\"{show: show}\">\n        <ng-content></ng-content>\n    </div>\n</div>\n    ",
           styles: ['.show { display: block !important; }', '.ui.icon.button { padding: 0.785714em; }']
         }), __metadata('design:paramtypes', [])], DropdownButtonComponent);
         return DropdownButtonComponent;
