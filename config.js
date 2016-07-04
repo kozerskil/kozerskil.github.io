@@ -3,6 +3,7 @@ System.config({
         "build/bundle.js": [
             "build/app/app.component.js",
             "build/app/design/design.component.js",
+            "build/app/dictionary/dictionary-edit-screen.component.js",
             "build/app/dictionary/dictionary-screen.component.js",
             "build/app/dictionary/shared/dictionary.service.js",
             "build/app/home/home-screen.component.js",
@@ -22,6 +23,7 @@ System.config({
             "build/app/shared/navigation.component.js",
             "build/app/shared/navigationState.service.js",
             "build/app/shared/rxjs-operators.js",
+            "build/app/shared/toggle.component.js",
             "build/main.js",
             "node_modules/@angular/common/bundles/common.umd.js",
             "node_modules/@angular/compiler/bundles/compiler.umd.js",
