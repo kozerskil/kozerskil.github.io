@@ -8,6 +8,7 @@ System.config({
             "build/app/dictionary/shared/dictionary.service.js",
             "build/app/home/home-screen.component.js",
             "build/app/lessons/lesson-screen.component.js",
+            "build/app/lessons/lessons-edit-screen.component.js",
             "build/app/lessons/lessons-screen.component.js",
             "build/app/lessons/repetition-screen.component.js",
             "build/app/lessons/shared/declension.pipe.js",

@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# Mon Jul 04 2016 16:03:42 GMT+0200 (Środkowoeuropejski czas letni)
+# Tue Jul 05 2016 12:36:41 GMT+0200 (Środkowoeuropejski czas letni)
 # http://docs.webplatform.org/wiki/apis/appcache/ApplicationCache
 
 CACHE:
@@ -23,6 +23,7 @@ CACHE:
 /data/ang6.json
 /data/ang7.json
 /data/ang8.json
+/data/ang9.json
 /data/battab01.json
 /data/battab02.json
 /data/battab03.json
