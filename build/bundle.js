@@ -15517,7 +15517,7 @@ $__System.register("11", ["3", "10", "c", "12", "13"], function(exports_1, conte
             return data.forEach(function(x, k) {
               return setTimeout(function() {
                 return _this.lessons.push(x);
-              }, 100 * k);
+              }, 30 * k);
             });
           });
           this.menu.push({
@@ -15586,24 +15586,38 @@ $__System.register("14", ["3", "13", "15", "f"], function(exports_1, context_1) 
         }
         LessonsEditScreenComponent.prototype.ngOnInit = function() {
           var _this = this;
+          this.excluded = this.storage.getObject('lessons-excluded');
           this.service.getAllData().subscribe(function(data) {
             return _this.lessons = data;
           });
         };
+        LessonsEditScreenComponent.prototype.toggleAll = function(checked) {
+          this.excluded = [];
+          var array = checked ? [] : this.excluded;
+          this.lessons.forEach(function(lesson, k) {
+            array.push(lesson.name);
+            setTimeout(function() {
+              return lesson.excluded = !checked;
+            }, k * 30);
+          });
+          this.serialize();
+        };
         LessonsEditScreenComponent.prototype.save = function(lesson) {
-          var excluded = this.storage.getObject('lessons-excluded');
           if (lesson.excluded) {
-            var index = excluded.indexOf(lesson.name);
+            var index = this.excluded.indexOf(lesson.name);
             if (index >= 0) {
-              excluded.splice(index, 1);
+              this.excluded.splice(index, 1);
             }
           } else {
-            excluded.push(lesson.name);
+            this.excluded.push(lesson.name);
           }
-          this.storage.setObject('lessons-excluded', excluded);
+          this.serialize();
+        };
+        LessonsEditScreenComponent.prototype.serialize = function() {
+          this.storage.setObject('lessons-excluded', this.excluded);
         };
         LessonsEditScreenComponent = __decorate([core_1.Component({
-          template: "\n    <div class=\"ui container\">\n        <div class=\"ui two columns stackable grid\">\n            <div class=\"column\" *ngFor=\"let lesson of lessons\">\n                <toggle [label]=\"lesson.title\" [(value)]=\"!lesson.excluded\" (valueChange)=\"save(lesson)\"></toggle>\n            </div>\n        </div>\n    </div>\n    ",
+          template: "\n    <div class=\"ui container\">\n        <div class=\"ui two columns stackable grid\">\n            <div class=\"column\">\n                <toggle [label]=\"'Wszystkie'\" (valueChange)=\"toggleAll($event)\"></toggle>\n            </div>\n            <div class=\"column\" *ngFor=\"let lesson of lessons\">\n                <toggle [label]=\"lesson.title\" [(value)]=\"!lesson.excluded\" (valueChange)=\"save(lesson)\"></toggle>\n            </div>\n        </div>\n    </div>\n    ",
           directives: [toggle_component_1.ToggleComponent],
           styles: [':host { display: block; }']
         }), __metadata('design:paramtypes', [lesson_service_1.LessonService, localStorage_service_1.LocalStorageService])], LessonsEditScreenComponent);
@@ -16501,11 +16515,20 @@ $__System.register("1e", ["3", "1d", "15", "f"], function(exports_1, context_1) 
             return _this.lessons = data;
           });
         };
-        DictionaryEditScreenComponent.prototype.save = function() {
-          this.storage.setObject('dictionary', this.lessons);
+        DictionaryEditScreenComponent.prototype.toggleAll = function(checked) {
+          this.lessons.forEach(function(lesson, k) {
+            lesson.dict = checked;
+          });
+          this.save();
+        };
+        DictionaryEditScreenComponent.prototype.save = function(lessons) {
+          if (lessons === void 0) {
+            lessons = this.lessons;
+          }
+          this.storage.setObject('dictionary', lessons);
         };
         DictionaryEditScreenComponent = __decorate([core_1.Component({
-          template: "\n    <div class=\"ui container\">\n        <div class=\"ui two columns stackable grid\">\n            <div class=\"column\" *ngFor=\"let lesson of lessons\">\n                <toggle [label]=\"lesson.title\" [(value)]=\"lesson.dict\" (valueChange)=\"save()\"></toggle>\n            </div>\n        </div>\n    </div>\n    ",
+          template: "\n    <div class=\"ui container\">\n        <div class=\"ui two columns stackable grid\">\n            <div class=\"column\">\n                <toggle [label]=\"'Wszystkie'\" (valueChange)=\"toggleAll($event)\"></toggle>\n            </div>\n            <div class=\"column\" *ngFor=\"let lesson of lessons\">\n                <toggle [label]=\"lesson.title\" [(value)]=\"lesson.dict\" (valueChange)=\"save()\"></toggle>\n            </div>\n        </div>\n    </div>\n    ",
           directives: [toggle_component_1.ToggleComponent],
           styles: [':host { display: block; }']
         }), __metadata('design:paramtypes', [dictionary_service_1.DictionaryService, localStorage_service_1.LocalStorageService])], DictionaryEditScreenComponent);
