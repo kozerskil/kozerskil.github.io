@@ -15520,6 +15520,9 @@ $__System.register("11", ["3", "10", "c", "12", "13"], function(exports_1, conte
               }, 30 * k);
             });
           });
+          this.service.getVersion().subscribe(function(version) {
+            return _this.version = version;
+          });
           this.menu.push({
             label: 'Edytuj',
             onSelect: function() {
@@ -15529,7 +15532,7 @@ $__System.register("11", ["3", "10", "c", "12", "13"], function(exports_1, conte
           this.state.set(this.menu);
         };
         LessonsScreenComponent = __decorate([core_1.Component({
-          template: "\n    <div class=\"ui grid container\">\n        <div class=\"twelve wide computer sixteen wide tablet column\">\n            <div class=\"ui three column stackable grid\">\n                <div class=\"column\" *ngFor='let lesson of lessons'>\n                    <lesson-card [lesson]='lesson' @animation=\"show\" draggable=\"true\"></lesson-card>\n                </div>\n            </div>\n        </div>\n        <div class=\"four wide computer only column\">\n            <img class=\"ui centered image\" src=\"assets/chicken.svg\">\n        </div>\n    </div>\n    ",
+          template: "\n<div class=\"ui grid container\">\n  <div class=\"twelve wide computer sixteen wide tablet column\">\n    <div class=\"ui three column stackable grid\">\n      <div class=\"column\" *ngFor='let lesson of lessons'>\n        <lesson-card [lesson]='lesson' @animation=\"show\" draggable=\"true\"></lesson-card>\n      </div>\n    </div>\n  </div>\n  <div class=\"four wide computer only column\">\n    <div class=\"ui grid\">\n      <div class=\"row\">\n        <img class=\"ui centered image\" src=\"assets/chicken.svg\">\n      </div>\n      <div class=\"centered row\">\n        <div class=\"ui tiny label\">\n          <i class=\"history icon\"></i> {{version}}\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n    ",
           styles: [':host { display: block; }'],
           directives: [lesson_card_component_1.LessonCardComponent],
           animations: [core_1.trigger('animation', [core_1.state('show', core_1.style({opacity: 1})), core_1.transition('void => *', [core_1.style({opacity: 0}), core_1.animate('0.1s ease-in-out')])])]
@@ -15596,9 +15599,7 @@ $__System.register("14", ["3", "13", "15", "f"], function(exports_1, context_1) 
           var array = checked ? [] : this.excluded;
           this.lessons.forEach(function(lesson, k) {
             array.push(lesson.name);
-            setTimeout(function() {
-              return lesson.excluded = !checked;
-            }, k * 30);
+            lesson.excluded = !checked;
           });
           this.serialize();
         };
@@ -16646,10 +16647,11 @@ $__System.register("20", ["3", "1f", "12", "10"], function(exports_1, context_1)
           this.router = router;
           this.menu = [];
           router.changes.subscribe(function() {
-            return _this.path = window.location.pathname;
-          });
-          router.changes.subscribe(function() {
-            return _this.menu = [];
+            var path = window.location.pathname;
+            if (_this.path !== path) {
+              _this.menu = [];
+              _this.path = path;
+            }
           });
           state.observable().subscribe(function(msg) {
             return _this.menu = msg.menu;
@@ -18673,6 +18675,11 @@ $__System.register("13", ["3", "24", "7", "25", "f"], function(exports_1, contex
           this.http = http;
           this.storage = storage;
         }
+        LessonService.prototype.getVersion = function() {
+          return this.http.get('version').map(function(response) {
+            return response.json().date || '';
+          });
+        };
         LessonService.prototype.getData = function() {
           return this.getDataInternal().filter(function(lesson) {
             return !lesson.excluded;
