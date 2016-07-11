@@ -15887,9 +15887,6 @@ $__System.register("11", ["3", "10", "c", "12", "13"], function(exports_1, conte
         }
         LessonsScreenComponent.prototype.ngOnInit = function() {
           var _this = this;
-          applicationCache.addEventListener('updateready', function() {
-            return window.location.pathname = '/';
-          }, false);
           applicationCache.addEventListener('downloading', function() {
             return _this.update = true;
           }, false);
@@ -15933,6 +15930,9 @@ $__System.register("11", ["3", "10", "c", "12", "13"], function(exports_1, conte
             window.location.pathname = '/';
             return;
           }
+          applicationCache.addEventListener('updateready', function() {
+            return window.location.pathname = '/';
+          }, false);
           applicationCache.update();
         };
         LessonsScreenComponent = __decorate([core_1.Component({
