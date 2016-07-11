@@ -15887,6 +15887,15 @@ $__System.register("11", ["3", "10", "c", "12", "13"], function(exports_1, conte
         }
         LessonsScreenComponent.prototype.ngOnInit = function() {
           var _this = this;
+          applicationCache.addEventListener('updateready', function() {
+            return window.location.pathname = '/';
+          }, false);
+          applicationCache.addEventListener('downloading', function() {
+            return _this.update = true;
+          }, false);
+          applicationCache.addEventListener('noupdate', function() {
+            return _this.noupdate = true;
+          }, false);
           this.update = applicationCache.status === applicationCache.UPDATEREADY;
           this.subscriptions.push(this.service.getData().subscribe(function(data) {
             return data.forEach(function(x, k) {
@@ -15912,7 +15921,6 @@ $__System.register("11", ["3", "10", "c", "12", "13"], function(exports_1, conte
           });
         };
         LessonsScreenComponent.prototype.cacheUpdate = function() {
-          var _this = this;
           if (applicationCache.status === applicationCache.UNCACHED) {
             return;
           }
@@ -15920,15 +15928,6 @@ $__System.register("11", ["3", "10", "c", "12", "13"], function(exports_1, conte
             window.location.pathname = '/';
             return;
           }
-          applicationCache.addEventListener('updateready', function() {
-            return window.location.pathname = '/';
-          }, false);
-          applicationCache.addEventListener('downloading', function() {
-            return _this.update = true;
-          }, false);
-          applicationCache.addEventListener('noupdate', function() {
-            return _this.noupdate = true;
-          }, false);
           applicationCache.update();
         };
         LessonsScreenComponent = __decorate([core_1.Component({
