@@ -16712,7 +16712,9 @@ $__System.register("1b", ["3", "10", "13", "f", "1a", "e"], function(exports_1, 
           };
           this.onAnswer = function(answer) {
             var rep = _this.config['repetition'];
-            rep[_this.memo.id] = ((rep[_this.memo.id] || 0) - (+answer * 2 - 1)) || undefined;
+            var oldCount = rep[_this.memo.id] || 0;
+            var diff = +answer * 2 - 1;
+            rep[_this.memo.id] = (oldCount - diff) || undefined;
             _this.serialize();
             if (!answer) {
               _this.memos.push(_this.memo);
@@ -16743,6 +16745,8 @@ $__System.register("1b", ["3", "10", "13", "f", "1a", "e"], function(exports_1, 
             return obj[id] > 0;
           }).map(function(id) {
             return byIdx[id];
+          }).sort(function() {
+            return 0.5 - Math.random();
           });
         };
         RepetitionScreenComponent = __decorate([core_1.Component({
