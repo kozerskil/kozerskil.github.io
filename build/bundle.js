@@ -15894,9 +15894,14 @@ $__System.register("11", ["3", "10", "c", "12", "13"], function(exports_1, conte
             return _this.update = true;
           }, false);
           applicationCache.addEventListener('noupdate', function() {
-            return _this.noupdate = true;
+            _this.noupdate = true;
+            var x = setTimeout(function() {
+              return _this.noupdate = false;
+            }, 5000);
           }, false);
-          this.update = applicationCache.status === applicationCache.UPDATEREADY;
+          setTimeout(function() {
+            return _this.update = applicationCache.status === applicationCache.UPDATEREADY;
+          });
           this.subscriptions.push(this.service.getData().subscribe(function(data) {
             return data.forEach(function(x, k) {
               return setTimeout(function() {
