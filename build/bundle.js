@@ -16645,7 +16645,7 @@ $__System.register("e", ["3"], function(exports_1, context_1) {
   };
 });
 
-$__System.register("1b", ["3", "10", "13", "f", "1a", "e"], function(exports_1, context_1) {
+$__System.register("1b", ["3", "10", "13", "f", "1a", "e", "12"], function(exports_1, context_1) {
   "use strict";
   var __moduleName = context_1 && context_1.id;
   var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
@@ -16669,7 +16669,8 @@ $__System.register("1b", ["3", "10", "13", "f", "1a", "e"], function(exports_1, 
       lesson_service_1,
       localStorage_service_1,
       memo_card_component_1,
-      declension_pipe_1;
+      declension_pipe_1,
+      navigationState_service_1;
   var RepetitionScreenComponent;
   return {
     setters: [function(core_1_1) {
@@ -16684,14 +16685,17 @@ $__System.register("1b", ["3", "10", "13", "f", "1a", "e"], function(exports_1, 
       memo_card_component_1 = memo_card_component_1_1;
     }, function(declension_pipe_1_1) {
       declension_pipe_1 = declension_pipe_1_1;
+    }, function(navigationState_service_1_1) {
+      navigationState_service_1 = navigationState_service_1_1;
     }],
     execute: function() {
       RepetitionScreenComponent = (function() {
-        function RepetitionScreenComponent(route, service, storage) {
+        function RepetitionScreenComponent(route, service, storage, state) {
           var _this = this;
           this.route = route;
           this.service = service;
           this.storage = storage;
+          this.state = state;
           this.subscriptions = [];
           this.config = {};
           this.idx = 0;
@@ -16709,6 +16713,14 @@ $__System.register("1b", ["3", "10", "13", "f", "1a", "e"], function(exports_1, 
             _this.memos = _this.selectMemos(state);
             _this.cardCount = _this.memos.length;
             _this.memo = _this.memos[_this.idx++];
+            var menu = [];
+            menu.push({
+              label: 'Zgłoś problem',
+              onSelect: function() {
+                return window.open('https://docs.google.com/forms/d/1bEMas5dOxq1CoGMRbxKnXPtL1eSYNP8hW-T3eKZALmg/viewform?entry.1693669629=' + _this.lesson.id + (_this.memo ? ';' + _this.memo.id : ''), '_blank');
+              }
+            });
+            _this.state.set(menu);
           };
           this.onAnswer = function(answer) {
             var rep = _this.config['repetition'];
@@ -16754,7 +16766,7 @@ $__System.register("1b", ["3", "10", "13", "f", "1a", "e"], function(exports_1, 
           directives: [memo_card_component_1.MemoCardComponent, router_1.ROUTER_DIRECTIVES],
           styles: ['.ui.circular.segment { width: 16em; height: 16em; }', '.ui.header .content { text-align: initial; max-width: calc(100% - 2.692em); }'],
           pipes: [declension_pipe_1.DeclensionPipe]
-        }), __metadata('design:paramtypes', [router_1.ActivatedRoute, lesson_service_1.LessonService, localStorage_service_1.LocalStorageService])], RepetitionScreenComponent);
+        }), __metadata('design:paramtypes', [router_1.ActivatedRoute, lesson_service_1.LessonService, localStorage_service_1.LocalStorageService, navigationState_service_1.NavigationStateService])], RepetitionScreenComponent);
         return RepetitionScreenComponent;
       }());
       exports_1("RepetitionScreenComponent", RepetitionScreenComponent);
