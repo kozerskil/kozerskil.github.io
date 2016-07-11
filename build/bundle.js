@@ -15882,6 +15882,8 @@ $__System.register("11", ["3", "10", "c", "12", "13"], function(exports_1, conte
           this.subscriptions = [];
           this.lessons = [];
           this.menu = [];
+          this.update = false;
+          this.noupdate = false;
         }
         LessonsScreenComponent.prototype.ngOnInit = function() {
           var _this = this;
@@ -15924,10 +15926,13 @@ $__System.register("11", ["3", "10", "c", "12", "13"], function(exports_1, conte
           applicationCache.addEventListener('downloading', function() {
             return _this.update = true;
           }, false);
+          applicationCache.addEventListener('noupdate', function() {
+            return _this.noupdate = true;
+          }, false);
           applicationCache.update();
         };
         LessonsScreenComponent = __decorate([core_1.Component({
-          template: "\n<div class=\"ui grid container\">\n  <div class=\"twelve wide computer sixteen wide tablet column\">\n    <div class=\"ui three column stackable grid\">\n      <div class=\"column\" *ngFor='let lesson of lessons'>\n        <lesson-card [lesson]='lesson' @animation=\"show\" draggable=\"true\"></lesson-card>\n      </div>\n      <div class=\"center aligned column\">\n        <div class=\"ui button\" (click)=\"cacheUpdate()\" [class.orange]=\"update\">\n          <i class=\"history icon\"></i> {{version}}\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"four wide computer only column\">\n    <div class=\"ui grid\">\n      <div class=\"centered row\">\n        <img class=\"ui image\" src=\"assets/chicken.svg\">\n      </div>\n    </div>\n  </div>\n</div>\n    ",
+          template: "\n<div class=\"ui grid container\">\n  <div class=\"twelve wide computer sixteen wide tablet column\">\n    <div class=\"ui three column stackable grid\">\n      <div class=\"column\" *ngFor='let lesson of lessons'>\n        <lesson-card [lesson]='lesson' @animation=\"show\" draggable=\"true\"></lesson-card>\n      </div>\n      <div class=\"center aligned column\">\n        <div class=\"ui button\" (click)=\"cacheUpdate()\" [class.orange]=\"update\" [class.green]=\"noupdate\">\n          <i class=\"history icon\"></i> {{version}}\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"four wide computer only column\">\n    <div class=\"ui grid\">\n      <div class=\"centered row\">\n        <img class=\"ui image\" src=\"assets/chicken.svg\">\n      </div>\n    </div>\n  </div>\n</div>\n    ",
           styles: [':host { display: block; }'],
           directives: [lesson_card_component_1.LessonCardComponent],
           animations: [core_1.trigger('animation', [core_1.state('show', core_1.style({opacity: 1})), core_1.transition('void => *', [core_1.style({opacity: 0}), core_1.animate('0.1s ease-in-out')])])]
