@@ -1,6 +1,7 @@
 {
   "name": "kurczakowe fiszki",
-  "background_color": "#f2f2f2",
+  "short_name": "fiszki",
+  "start_url": "index.html",
   "icons": [
     {
       "src": "assets/favicon-36.png",
@@ -39,6 +40,7 @@
       "density": 4.0
     }
   ],
-  "start_url": "index.html",
+  "background_color": "#FAFAFA",
+  "theme_color": "#512DA8", 
   "display": "standalone"
 }
