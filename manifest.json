@@ -40,7 +40,7 @@
       "density": 4.0
     }
   ],
-  "background_color": "#FAFAFA",
-  "theme_color": "#512DA8", 
+  "background_color": "#f6db85",
+  "theme_color": "#f6db85", 
   "display": "standalone"
 }
